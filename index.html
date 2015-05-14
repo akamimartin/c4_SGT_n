@@ -19,8 +19,21 @@
     addstudent.student_grade = $('#student_grade').val();
     student_array.push(addstudent);
   }
+
+  function delete_student(){
+    var id = prompt("Please input the ID of the student you would like to delete");
+    if(student_array[id] == undefined){
+      return;
+    }
+    else {
+      alert(student_array[id].student_name + " was removed from the list");
+      student_array.splice(id,1);
+    }
+  }
+
   $(document).ready(function(){
-    $('button').on('click', add_student);
+    $('.add_student').on('click', add_student);
+    $('.delete_student').on('click', delete_student);
 
   });
   </script>
@@ -38,7 +51,8 @@
     <input type="text" name="student_name" id="student_name" placeholder="Student Name">
     <input type="text" name="student_course" id="student_course" placeholder="Student Course">
     <input type="text" name="student_grade" id="student_grade" placeholder="Student Grade (0-100)">
-    <button type="button">Add Student</button>
+    <button type="button" class="add_student">Add Student</button>
+    <button type="button" class="delete_student">Delete Student</button>
   </section>
 </body>
 </html>
