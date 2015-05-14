@@ -7,10 +7,16 @@
   <script>
 
   sum_of_grades = null
+  grades_array = []
+  highest_lowest = []
   function averageGrade(){
     for (var i=0; i<student_array.length;i++){
+      grades_array.push(student_array[i].grade);
+
     sum_of_grades += parseFloat(student_array[i].grade);
   }
+  highest_lowest.push(grades_array.sort[0]);
+  highest_lowest.push(grades_array.sort[-1]);
   average_of_grades = sum_of_grades/student_array.length;
 };
 $('#grade_average > span').append(average_of_grades);
