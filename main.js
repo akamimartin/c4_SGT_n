@@ -7,3 +7,10 @@ function average_grade(){
 	}
 	average = total/student_array.length;
 }
+
+function display_average(){
+	$('.col-sm-2').html(average);
+}
+$(document).ready(function(){
+	display_average();
+});
