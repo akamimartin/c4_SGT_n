@@ -9,10 +9,13 @@
   sum_of_grades = null
   function averageGrade(){
     for (var i=0; i<student_array.length;i++){
-    sum_of_grades += student_array[i.grade];
+    sum_of_grades += parseFloat(student_array[i].grade);
   }
   average_of_grades = sum_of_grades/student_array.length;
 };
+$('#grade_average > span').append(average_of_grades);
+
+
   </script>
 
 </head>
