@@ -23,19 +23,19 @@ function highLowHighlight(){
 	var lowIndex = 0;
 	for(var i=0; i<loop; i++){
 
-		if(studentArray[i].grade > studentArray[high].grade){
+		if(studentArray[i].grade > studentArray[highIndex].grade){
 			highIndex = i;
-		}else if(studentArray[i].grade < studentArray[low].grade){
+		}else if(studentArray[i].grade < studentArray[lowIndex].grade){
 			lowIndex = i;
 		}
 	}
 
 	row.removeClass("high");
 	row.removeClass("low");
-	
+
 	if(highIndex != 0 && lowIndex != 0 && highIndex != lowIndex){	
-		row(high).addClass("high");
-		row(low).addClass("low");
+		row(highIndex).addClass("high");
+		row(lowIndex).addClass("low");
 	}else{
 		console.log("Error with highLowHighlight");
 	}
