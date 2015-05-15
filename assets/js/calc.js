@@ -17,12 +17,12 @@ function displayAvg(){
 }
 
 function highLowHighlight(){
-	var row = $(".student-row");
+	var row = $(".student_container");
 	var loop = studentArray.length;
 	if(loop < 1){
 		return;
 	}
-	var highIndex = 0; 
+	var highIndex = 0;
 	var lowIndex = 0;
 	var highGrade = studentArray[highIndex].grade;
 	var lowGrade = studentArray[lowIndex].grade;
@@ -40,11 +40,36 @@ function highLowHighlight(){
 		}
 	}
 
+	var highArray = [$(row[highIndex])];
+	var lowArray = [$(row[lowIndex])];
+	
+	for(var i=0; i<loop; i++){
+		var student  = studentArray[i];
+		if(student.grade == highGrade){
+			highArray.push($(row[i]));
+		}else if(student.grade == lowGrade){
+			lowArray.push($(row[i]));
+		}
+	}
+
 	row.removeClass("alert-success");
 	row.removeClass("alert-danger");
 
-	if(highIndex != lowIndex){	
-		$(row[highIndex]).addClass("alert-success");
-		$(row[lowIndex]).addClass("alert-danger");
+
+	if(highIndex != lowIndex){
+		if(highArray.length >= lowArray.length){
+			var count = highArray.length;
+		}else{
+			var count = lowArray.length;
+		}
+
+		for(var i=0; i<count; i++){
+			if(highArray.length > i){
+				highArray[i].addClass("alert-success");
+			}
+			if(lowArray.length > i){
+				lowArray[i].addClass("alert-danger");
+			}
+		}
 	}
 }

@@ -1,5 +1,6 @@
 //Main JS File
 var studentArray = [];
+var uniqueId = 0;
 
 $(document).ready(function(){
 
@@ -8,7 +9,13 @@ $(document).ready(function(){
 			displayAvg();
 			highLowHighlight();
 		}
-	})
+	});
+
+	$("#student_info").on("click", "button", function(){
+		var rowDel = $(this).closest(".student_container");
+		var rowId = rowDel.attr("id");
+		console.log(rowId);
+	});
 
 });
 
@@ -27,7 +34,7 @@ function addStudent(){
 		if(nameIn.attr("data-toggle") != "popover"){
 			nameIn.attr("data-container", "body");
 			nameIn.attr("data-toggle", "popover");
-			nameIn.attr("data-placement", "bottom");
+			nameIn.attr("data-placement", "top");
 			nameIn.attr("data-trigger", "manual");
 			nameIn.attr("title", "Input Error");
 		}
@@ -42,7 +49,7 @@ function addStudent(){
 		if(courseIn.attr("data-toggle") != "popover"){
 			courseIn.attr("data-container", "body");
 			courseIn.attr("data-toggle", "popover");
-			courseIn.attr("data-placement", "bottom");
+			courseIn.attr("data-placement", "left");
 			courseIn.attr("data-trigger", "manual");
 			courseIn.attr("title", "Input Error");
 		}
@@ -72,14 +79,17 @@ function addStudent(){
 	}
 
 	if(!error){
+		uniqueId++;
 		var student = {};
+		var rowId = "row" + uniqueId;
 		student.name = nameValue;
 		student.course = courseValue;
 		student.grade = gradeValue;
+		student.id = rowId;
 		studentArray.push(student);
 		student = {};
 
-		var row = $("<div class='student_container panel-body'><div class='student-row row'><div class='col-sm-4 col-xs-3'>" + nameValue + "</div><div class='col-sm-3 col-xs-3'>" + courseValue + "</div><div class='col-sm-2 col-xs-3'>" + gradeValue + "</div><div class='col-sm-2 col-xs-2'><button class='btn btn-danger btn-sm'><span class='glyphicon glyphicon-trash' aria-hidden='true'> </span><span class='hidden-xs'>Remove</span></button></div></div></div>");
+		var row = $("<div class='student_container panel-body' id=" + rowId + "><div class='student-row row'><div class='col-sm-4 col-xs-3'>" + nameValue + "</div><div class='col-sm-3 col-xs-3'>" + courseValue + "</div><div class='col-sm-2 col-xs-3'>" + gradeValue + "</div><div class='col-sm-2 col-xs-2'><button class='btn btn-danger btn-sm'><span class='glyphicon glyphicon-trash' aria-hidden='true'> </span><span class='hidden-xs'>Remove</span></button></div></div></div>");
 		row.appendTo("#student_info");
 
 		nameIn.val('');
