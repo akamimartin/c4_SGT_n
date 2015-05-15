@@ -2,20 +2,25 @@
 <html>
     <head>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="styles.css">
     </head>
 
     <body>
-        <div class="col-sm-10 col-sm-offset-1">
-            <div class="col-sm-12">
-                <div class="col-sm-7">
-                    <h1>Student Grade Table</h1></div>
-                <div id="grade_average" class="col-sm-2"><h3>Average : <span></span></h3></div>
+        <div class="col-sm-10 col-sm-offset-1 col-xs-12">
+            <div class="col-sm-12 col-xs-12">
+                <div class="col-sm-5 col-xs-8">
+                    <h1 class="hidden-xs">Student Grade Table</h1>
+                    <h3 class="visible-xs">Student Grade Table</h3></div>
+                <div id="grade_average" class="col-sm-4 col-xs-4">
+                    <h3 class="hidden-xs pull-right">GPA : <span class="label label-default">1</span></h3>
+                    <h4 class="visible-xs pull-right">GPA : <span class="label label-default">2</span></h4></div>
             </div>
-            <section id="student_input" class="col-sm-3 col-sm-push-9 well">
-                <h4>Add Student Grade</h4>
+            <section id="student_input" class="col-sm-3 col-sm-push-9 col-xs-12 well">
+                <h4 class="hidden-xs">Add Student Grade</h4>
+                <h5 class="visible-xs">Add Student Grade</h5>
                 <div class="input-group">
                     <input type="text" class="form-control" id="student_name" name="student_name" placeholder="Student Name" aria-describedby="sizing-addon2">
                 </div>
@@ -25,23 +30,26 @@
                 <div class="input-group">
                     <input type="text" class="form-control" id="student_grade" name="student_grade" placeholder="Student Grade (0-100)" aria-describedby="sizing-addon2">
                 </div>
-                <button type="button" class="btn btn-success pull-right">Add Student</button>
+                <button type="button" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="false"> Student</button>
+                <span class="clearfix"></span>
             </section>
-            <section class="panel panel-default col-sm-9 col-sm-pull-3" id="student_info">
+            <section class="panel panel-default col-sm-9 col-sm-pull-3 col-xs-12" id="student_info">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-sm-5">Student Name</div>
-                        <div class="col-sm-3">Student Course</div>
-                        <div class="col-sm-2">Student Grade</div>
-                        <div class="col-sm-2">Operations</div>
+                        <div class="col-sm-4 col-xs-3">Student Name</div>
+                        <div class="col-sm-3 col-xs-3">Student Course</div>
+                        <div class="col-sm-2 col-xs-3">Student Grade</div>
+                        <div class="col-sm-2 col-xs-2"><span class="hidden-xs">Operations</span><span class="visible-xs">Ops</span></div>
                     </div>
                 </div>
                 <div class="student_container panel-body">
                     <div class="student-row row">
-                        <div class="col-sm-5">Example Student</div>
-                        <div class="col-sm-3">Example Course</div>
-                        <div class="col-sm-2">Example Grade</div>
-                        <div class="col-sm-2"><button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove</button></div>
+                        <div class="col-sm-4 col-xs-3">Example Student</div>
+                        <div class="col-sm-3 col-xs-3">Example Course</div>
+                        <div class="col-sm-2 col-xs-3">Example Grade</div>
+                        <div class="col-sm-2 col-xs-2">
+                            <button class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> <span class="hidden-xs">Remove</span></button>
+                        </div>
                     </div>
                 </div>
             </section>
