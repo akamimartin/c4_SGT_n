@@ -1,12 +1,20 @@
 <!doctype html>
 <html>
 <head>
+
+
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="main.js"></script>
+<script>
+
+</script>
 </head>
+
 <body>
+<<<<<<< HEAD
   <section id="student_info">
     <div class="student_container">
       <span class="col-sm-5">Student Name</span>
@@ -21,6 +29,26 @@
     <input type="text" name="student_course" id="student_name" placeholder="Student Course">
     <input type="text" name="student_grade" id="student_grade" placeholder="Student Grade (0-100)">
     <button type="button">Add Student</button>
+=======
+
+  <section id="student_input">
+
+    <div class="student_container">
+      <span class="col-sm-4">Student Name</span>
+      <span class="col-sm-4">Student Course</span>
+      <span class="col-sm-4">Student Grade</span>
+    </div>
+  </section>
+
+
+  <section id="student_info">
+    <input class="form-control" type="text" name="student_name" id="student_name" placeholder="Student Name">
+    <input class="form-control" type="text" name="student_course" id="student_course" placeholder="Student Course">
+    <input class="form-control" type="text" name="student_grade" id="student_grade" placeholder="Student Grade (0-100)">
+    <button id="button" class="btn btn-info" type="button">Add Student</button>
+    <button id="button1" class="btn btn-danger" type="button">Delete</button>
+    <div id="grade_average" class="col-sm-2 col-sm-offset-10">Average: <span></span></div>
+>>>>>>> a2fcc8c56a154e29d087233d7c591439f68d0db7
   </section>
 </body>
 </html>
