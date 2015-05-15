@@ -16,6 +16,8 @@
         student_grade: null
     }
     var color_count = 0;
+    var highest_grade_indeces = [0];
+    var lowest_grade_indeces = [0];
 
 
     /***************************
@@ -29,32 +31,30 @@
         addstudent.student_grade = parseFloat($('#student_grade').val());
         student_array.push(addstudent);
     }
-    function list_students(){
+
+    function list_students() {
         var color = '';
-        
+
         $('.student_information').empty();
-        for(var i = 0; i<student_array.length; i++){
-            if(color_count == 0){
-            color = 'red'
-            color_count++;
+        for (var i = 0; i < student_array.length; i++) {
+            if (color_count == 0) {
+                color = '#FFB599'
+                color_count++;
+            } else {
+                color = '#FF7D4D';
+                color_count--;
+            }
+            var student_info_container = $('<div>').addClass('student_information col-sm-12 well').css('background-color', color);
+            var sname = $('<div>').addClass('sname col-sm-3').text(student_array[i].student_name);
+            var scourse = $('<div>').addClass('scourse col-sm-3').text(student_array[i].student_course);
+            var sgrade = $('<div>').addClass('sgrade col-sm-3').text(student_array[i].student_grade);
+            var delete_button = $('<button>').addClass('delete col-sm-2').text('Delete Student');
+            $(student_info_container).append(sname, scourse, sgrade, delete_button)
+            $('#student_info').append(student_info_container);
         }
-        else {
-            color = 'green';
-            color_count--;
-        }
-        var student_info_container = $('<div>').addClass('student_information col-sm-12 well').css('background-color', color);
-        var sname = $('<div>').addClass('sname col-sm-3').text( student_array[i].student_name);
-        var scourse = $('<div>').addClass('scourse col-sm-3').text( student_array[i].student_course);
-        var sgrade = $('<div>').addClass('sgrade col-sm-3').text(student_array[i].student_grade);
-        var delete_button = $('<button>').addClass('delete col-sm-2').text('Delete Student');
-        $(student_info_container).append(sname, scourse, sgrade, delete_button)
-        $('#student_info').append(student_info_container);
-    }
     }
 
-    /********************
-     * Program Execution
-     ********************/
+
     function calc_avg() {
         var avg = 0;
         var sum = 0;
@@ -73,6 +73,50 @@
             student_array.splice(id, 1);
         }
     }
+
+    function high_low() {
+
+        var highest_grade = student_array[0].student_grade;
+        var lowest_grade = student_array[0].student_grade;
+        for (var i = 0; i < student_array.length; i++) {
+            //highest check
+            if (student_array[i].student_grade == highest_grade) {
+                highest_grade_indeces.push(i);
+            }
+            if (student_array[i].student_grade > highest_grade) {
+                if (highest_grade_indeces.length > 1) {
+                    highest_grade_indeces = [0];
+                }
+                highest_grade_indeces[0] = i;
+                highest_grade = student_array[i].student_grade;
+            }
+            if (student_array[i].student_grade == lowest_grade) {
+                lowest_grade_indeces.push(i)
+            }
+            //lowest check
+            if (student_array[i].student_grade < lowest_grade) {
+                if (lowest_grade_indeces.length > 1) {
+                    lowest_grade_indeces = [0];
+                }
+                lowest_grade_indeces[0] = i;
+                lowest_grade = student_array[i].student_grade;
+            }
+
+        }
+    }
+
+    function highlight_grade() {
+            for (var i = 0; i < highest_grade_indeces.length; i++) {
+                $('.sgrade').eq(highest_grade_indeces[i]).css('color', 'green');
+
+            }
+            for (var i = 0; i < lowest_grade_indeces.length; i++) {
+                $('.sgrade').eq(lowest_grade_indeces[i]).css('color', 'red');
+            }
+        }
+        /********************
+         * Program Execution
+         ********************/
 
     $(document).ready(function() {
         $('.add_student').on('click', add_student);
@@ -100,7 +144,6 @@
         <button type="button" class="add_student">Add Student</button>
         <button type="button" class="delete_student">Delete Student</button>
         <button type="button" class="refresh_student">Refresh Students</button>
-
     </section>
 </body>
 
