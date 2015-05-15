@@ -43,11 +43,14 @@ function highlight(){
 function average_grade(){
 	var total = 0;
 	for (var i = 0; i < student_array.length; i++){
-		var grade = parseFloat(student_array[i].grade);
+		var grade = student_array[i].grade;
+		if (grade == ''){
+			grade = 0;
+		}
+		grade = parseFloat(grade);
 		total += grade;
-
 	}
-	average = total/student_array.length;
+	average = +((total/student_array.length).toFixed(2));
 }
 
 //displays the average
