@@ -16,30 +16,59 @@ function addStudent(){
 	var nameIn = $("#student_name");
 	var courseIn = $("#student_course");
 	var gradeIn = $("#student_grade");
-	var name = nameIn.val();
-	var course = courseIn.val();
-	var grade = parseInt(gradeIn.val());
-	var error = false;
+	var nameValue = nameIn.val();
+	var courseValue = courseIn.val();
+	var gradeValue = parseInt(gradeIn.val());
+	var errorValue = false;
 
-	$(".error").remove();
 
-	if(name == ""){
-		var nameError = $("<span class='error'>Enter a Valid Name </span>");
-		nameError.appendTo("#student_input");
+	if(nameValue == ""){
+		var nameError = "Please enter a name";
+		if(nameIn.attr("data-toggle") != "popover"){
+			nameIn.attr("data-container", "body");
+			nameIn.attr("data-toggle", "popover");
+			nameIn.attr("data-placement", "bottom");
+			nameIn.attr("data-trigger", "manual");
+			nameIn.attr("title", "Input Error");
+		}
+		nameIn.attr("data-content", nameError);
+
+		nameIn.popover('show');
 		error = true;
-		setTimeout(function(){nameError.remove()}, 3000);
+		setTimeout(function(){nameIn.popover('hide')}, 3000);
 	}
-	if(course == ""){
-		var courseError = $("<span class='error'>Enter a Valid Course </span>");
-		courseError.appendTo("#student_input");
+	if(courseValue == ""){
+		var courseError = "Please enter a course";
+		if(courseIn.attr("data-toggle") != "popover"){
+			courseIn.attr("data-container", "body");
+			courseIn.attr("data-toggle", "popover");
+			courseIn.attr("data-placement", "bottom");
+			courseIn.attr("data-trigger", "manual");
+			courseIn.attr("title", "Input Error");
+		}
+		courseIn.attr("data-content", courseError);
+
+		courseIn.popover('show');
 		error = true;
-		setTimeout(function(){courseError.remove()}, 3000);
+		setTimeout(function(){courseIn.popover('hide')}, 3000);
 	}
-	if(grade < 0 || grade > 100 || isNaN(grade)){
-		var gradeError = $("<span class='error'>Enter a Valid Grade Between 0-100 </span>");
-		gradeError.appendTo("#student_input");
+	if(gradeValue < 0 || gradeValue > 100 || isNaN(gradeValue)){
+		var gradeError = "Please enter numbers only";
+		if(gradeValue < 0 || gradeValue > 100){
+			gradeError = "Please enter a number between 0 and 100";
+		}
+		if(gradeIn.attr("data-toggle") != "popover"){
+			gradeIn.attr("data-container", "body");
+			gradeIn.attr("data-toggle", "popover");
+			gradeIn.attr("data-placement", "bottom");
+			gradeIn.attr("data-trigger", "manual");
+			gradeIn.attr("title", "Input Error");
+		}
+		gradeIn.attr("data-content", gradeError);
+
+		gradeIn.popover('show');
 		error = true;
-		setTimeout(function(){gradeError.remove()}, 3000);
+		setTimeout(function(){gradeIn.popover('hide')}, 3000);
 	}
 
 	if(!error){

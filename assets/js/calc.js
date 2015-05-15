@@ -21,16 +21,21 @@ function highLowHighlight(){
 	var loop = studentArray.length;
 	var highIndex = 0; 
 	var lowIndex = 0;
-	for(var i=0; i<loop; i++){
+	var highGrade = studentArray[highIndex].grade;
+	var lowGrade = studentArray[lowIndex].grade;
 
-		if(studentArray[i].grade > studentArray[highIndex].grade){
+	for(var i=0; i<loop; i++){
+		
+		var student = studentArray[i];
+
+		if(student.grade > highGrade){
 			highIndex = i;
-		}else if(studentArray[i].grade < studentArray[lowIndex].grade){
+			highGrade = student.grade;
+		}else if(student.grade < lowGrade){
 			lowIndex = i;
+			lowGrade = student.grade;
 		}
 	}
-
-	console.log("row", row, "High", highIndex, "low", lowIndex);
 
 	row.removeClass("high");
 	row.removeClass("low");
