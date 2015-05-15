@@ -15,4 +15,18 @@ function add_student() {
 }
 $(document).ready(function() {
     $('.s_add').on('click', add_student);
-})
+});
+
+function average_grade() {
+    var sum = 0;
+    var average = 0;
+
+    for (i = 0; i < student_array.length; i++) {
+        sum += student_array[i];
+        average = sum / student_object.grade;
+    }
+}
+
+function highlow_grade() {
+
+}
