@@ -6,19 +6,39 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+    var student_grade_sum = 0;
+    var student_grade_average = 0;
+    var index = 0;
+    var student_grade_as_float = 0;
+    var pt_student_array = [];
+    var student_object = {
+        student_name: null,
+        student_course: null,
+        student_grade: null
+    }
     $(document).ready(function() {
-        var student_grade_sum = 0;
-        var student_grade_average = 0;
-        var pt_student_array = [];
+        $('#add_student').click(call_student_info_and_average);
+
+    });
+
+    function call_student_info_and_average() {
+        student_info();
+        pt_student_average_grade();
+        clear_student_info();
+    }
+
+    function clear_student_info(){
+        student_object.student_name = $('#student_name').val('');
+        student_object.student_course = $('#student_course').val('');
+        student_object.student_grade = $('#student_grade').val(0);
+    }
+
+    function student_info() {
         var student_object = {
             student_name: null,
             student_course: null,
             student_grade: null
         }
-
-    });
-
-    function student_info() {
         student_object.student_name = $('#student_name').val();
         student_object.student_course = $('#student_course').val();
         student_object.student_grade = $('#student_grade').val();
@@ -27,16 +47,25 @@
         console.log("student course : ", student_object.student_course);
         console.log("student grade : ", student_object.student_grade);
         console.log("pt_student_array: ", pt_student_array);
+        
 
     }
 
 
     function pt_student_average_grade() {
         for (var i = 0; i < pt_student_array.length; i++) {
-            student_grade_sum += student_object[i].student_grade;
-            student_grade_average = student_grade_sum / pt_student_array.length
+            student_grade_as_float = parseFloat(pt_student_array[i].student_grade);
+            console.log("student_grade_as_float: ", student_grade_as_float);
+            student_grade_sum = parseFloat(student_grade_sum) + parseFloat(student_grade_as_float);
+            console.log("in the pt_student_average_grade function student grade sum: ", student_grade_sum);
+            console.log("in the pt_student_average_grade pt_student_array.length: ", pt_student_array.length);
+            
+
         }
-        console.log(student_grade_average);
+        student_grade_average = student_grade_sum / parseFloat(pt_student_array.length);
+        student_grade_sum = 0;
+        console.log("in the pt_student_average_grade function : ", student_grade_average);
+        $('#grade_average > span').html(student_grade_average);
     }
     </script>
 </head>
@@ -54,7 +83,7 @@
         <input type="text" name="student_name" id="student_name" placeholder="Student Name">
         <input type="text" name="student_course" id="student_course" placeholder="Student Course">
         <input type="text" name="student_grade" id="student_grade" placeholder="Student Grade (0-100)">
-        <button type="button">Add Student</button>
+        <button type="button" id="add_student">Add Student</button>
     </section>
 </body>
 
