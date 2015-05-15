@@ -78,7 +78,8 @@
         for (var i = 0; i < student_array.length; i++) {
             sum += student_array[i].student_grade;
         }
-        avg = sum / parseFloat(student_array.length);
+        avg = parseFloat(sum) / parseFloat(student_array.length);
+        avg = avg.toFixed(2);
         $('#grade_average > span').html(avg);
     }
 
@@ -93,7 +94,8 @@
     }
 
     function high_low() {
-
+        highest_grade_indeces = [0];
+        lowest_grade_indeces = [0];
         var highest_grade = student_array[0].student_grade;
         var lowest_grade = student_array[0].student_grade;
         for (var i = 0; i < student_array.length; i++) {
@@ -109,7 +111,7 @@
                 highest_grade = student_array[i].student_grade;
             }
             if (student_array[i].student_grade == lowest_grade) {
-                lowest_grade_indeces.push(i)
+                lowest_grade_indeces.push(i);
             }
             //lowest check
             if (student_array[i].student_grade < lowest_grade) {
