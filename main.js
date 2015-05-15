@@ -10,28 +10,36 @@ function highest_lowest_grade(){
 	
 	for (var i = 0; i < student_array.length; i++){
 		var grade = parseFloat(student_array[i].grade);
-		if (grade > highest_grade) {
+		
+		if (grade == highest_grade){
+			highest_array.push(i);
+			console.log('highest array is ', highest_array);
+		}
+		else if (grade > highest_grade) {
 			highest_array = [i];
 			highest_grade = grade;
+			console.log('highest array is ', highest_array);
 		}
-		else if (grade == highest_grade){
-			highest_array.push(i);
-		}
-
 		else if (grade < lowest_grade){
 			lowest_array = [i];
 			lowest_grade = grade;
+			console.log('lowest array is ', lowest_array);
 		}
 		else if(grade == lowest_grade){
 			lowest_array.push(i);
+			console.log('lowest array is ', lowest_array);
 		}
 	}
 }
 function highlight(){
+	for (var i = 0; i < student_array.length; i++){
+		student_array[i].grade_element.removeClass('highest');
+		student_array[i].grade_element.removeClass('lowest');
+	}
 	for (var i = 0; i < highest_array.length; i++){
 		student_array[highest_array[i]].grade_element.addClass('highest');
 	}
-	for (var i = 0; i < lowest_array.length); i++){
+	for (var i = 0; i < lowest_array.length; i++){
 		student_array[lowest_array[i]].grade_element.addClass('lowest');
 	}
 }
