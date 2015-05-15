@@ -8,3 +8,6 @@ input {
     color: black;
     background: rgb(245, 245, 245);
 }
+.alert {
+	margin-top: 5%;
+}
