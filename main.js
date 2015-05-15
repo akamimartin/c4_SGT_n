@@ -82,6 +82,7 @@ function add_studentinfo() {
 
 function display_style() {
 	//changes input 
+
 	$('.form-control').css({
 		backgroundColor: 'white',
 		height: '50px',
@@ -120,7 +121,8 @@ function display_style() {
 	$('#operations').css({
 		position: 'absolute',
 		fontSize: '20px',
-		color: '#7f0000',
+		color: '#3f3f3f',
+		textDecoration: 'underline',
 	})
 }
 
