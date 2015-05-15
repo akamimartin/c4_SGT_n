@@ -11,7 +11,8 @@ function average_grade(){
 	average = total/student_array.length;
 }
 
-//dev1 below
+//dev1 below 
+//add input information into #student_info.
 var student_array= [];
 
 function add_studentinfo() {
@@ -36,26 +37,37 @@ function display_style() {
 	//changes student name, student course, and student grade
 	$('.student_container').css({
 		fontSize: '20px',
+		fontWeight: 'bold',
+		color: '#3f3f3f',
 	});
 
 	$('#grade_average').css({
 		fontSize: '20px',
+		position: 'relative',
+		top: '-30px',
+		left: '-860px',
+		fontWeight: 'bold',
+		color: '#3f3f3f',
 	});
 
 	$('#button').css({
 		position: 'relative',
 		left: '80%',
+		top: '10px',
+		height: '45px',
 	});
 
 	$('#button1').css({
 		position: 'relative',
 		left: '80%',
+		top: '10px',
+		height: '45px',
 	});
 }
 
 $(document).ready(function(){
 	display_style();
 	$('#button').click(function(){
-		add_studentinfo();
+	add_studentinfo();
 	});
 });
