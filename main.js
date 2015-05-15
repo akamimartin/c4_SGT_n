@@ -20,13 +20,18 @@ function display_average(){
 
 //dev1 below 
 //add input information into #student_info.
-var student_array= [];
 
 function add_studentinfo() {
-  $('#name').html($("#student_name").val());
-  $('#course').html($("#student_course").val());
-  $('#grade').html($("#student_grade").val());
+//added new div (5/15)
+  var name_div = $('<div>').addClass("inputed_name").html($("#student_name").val());
+  var course_div = $('<div>').addClass("inputed_course").html($("#student_course").val());
+  var grade_div = $('<div>').addClass("inputed_grade").html($("#student_grade").val());
 
+  $('#name').append(name_div);
+  $('#course').append(course_div);
+  $('#grade').append(grade_div);
+//end 
+  
   var student = {
     names: $("#student_name").val(),
     course: $("#student_course").val(),
@@ -74,6 +79,11 @@ function display_style() {
 		top: '10px',
 		height: '45px',
 	});
+
+	$('#operations').css({
+		position: 'relative',
+		left: '20%',
+	})
 }
 
 $(document).ready(function(){
