@@ -10,6 +10,10 @@
     var student_grade_average = 0;
     var index = 0;
     var student_grade_as_float = 0;
+    var highest_grade = -1;
+    var lowest_grade = 101;
+    var highest_index = [];
+    var lowest_index = [];
     var pt_student_array = [];
     var student_object = {
         student_name: null,
@@ -27,7 +31,7 @@
         clear_student_info();
     }
 
-    function clear_student_info(){
+    function clear_student_info() {
         student_object.student_name = $('#student_name').val('');
         student_object.student_course = $('#student_course').val('');
         student_object.student_grade = $('#student_grade').val(0);
@@ -47,7 +51,7 @@
         console.log("student course : ", student_object.student_course);
         console.log("student grade : ", student_object.student_grade);
         console.log("pt_student_array: ", pt_student_array);
-        
+
 
     }
 
@@ -59,13 +63,35 @@
             student_grade_sum = parseFloat(student_grade_sum) + parseFloat(student_grade_as_float);
             console.log("in the pt_student_average_grade function student grade sum: ", student_grade_sum);
             console.log("in the pt_student_average_grade pt_student_array.length: ", pt_student_array.length);
-            
-
         }
         student_grade_average = student_grade_sum / parseFloat(pt_student_array.length);
         student_grade_sum = 0;
         console.log("in the pt_student_average_grade function : ", student_grade_average);
         $('#grade_average > span').html(student_grade_average);
+    }
+
+    function pt_student_highest_grade(){
+      for (var i = 0; i < pt_student_array; i++){
+          if(pt_student_array[i] > highest_grade){
+            highest_grade = pt_student_array[i];
+            highest_index = [i];
+          }
+          else if (pt_student_array[i] == highest_grade){
+            highest_index.push[i];
+          }
+      }
+    }
+
+    function pt_student_lowest_grade(){
+      for (var i = 0; i < pt_student_array[i]){
+        if(pt_student_array[i] < lowest_grade){
+          lowest_grade = pt_student_array[i];
+          lowest_index = pt_student_array[i];
+        }
+        else if (pt_student_array[i] == lowest_grade){
+          lowest_index.push[i];
+        }
+      }
     }
     </script>
 </head>
