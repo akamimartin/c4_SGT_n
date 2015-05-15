@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -22,34 +23,41 @@
      *   Function definitions
      *******************************/
     function add_student() {
-
+        if($('#student_name').val() == '' || $('#student_course').val() == '' || $('#student_grade').val() == ''){
+            return;
+        }
         var addstudent = Object.create(student_object);
         addstudent.student_name = $('#student_name').val();
         addstudent.student_course = $('#student_course').val();
         addstudent.student_grade = parseFloat($('#student_grade').val());
         student_array.push(addstudent);
+        $('input').val('');
     }
     function list_students(){
+        var background_color = '';
         var color = '';
         
-        $('.student_information').empty();
+        $('.student_list').empty();
         for(var i = 0; i<student_array.length; i++){
             if(color_count == 0){
-            color = 'red'
+            background_color = '#E5FFF6'
+            color = '#4C997F';
             color_count++;
         }
         else {
-            color = 'green';
+            background_color = '#FAFAEE';
+            color = '#B2A089';
             color_count--;
         }
-        var student_info_container = $('<div>').addClass('student_information col-sm-12 well').css('background-color', color);
+        var student_info_container = $('<div>').addClass('student_information col-sm-12 well').css('background-color', background_color).css('color',color);
         var sname = $('<div>').addClass('sname col-sm-3').text( student_array[i].student_name);
         var scourse = $('<div>').addClass('scourse col-sm-3').text( student_array[i].student_course);
         var sgrade = $('<div>').addClass('sgrade col-sm-3').text(student_array[i].student_grade);
-        var delete_button = $('<button>').addClass('delete col-sm-2').text('Delete Student');
+        var delete_button = $('<button>').addClass('delete col-sm-2').text('Delete');
         $(student_info_container).append(sname, scourse, sgrade, delete_button)
-        $('#student_info').append(student_info_container);
+        $('.student_list').append(student_info_container);
     }
+    calc_avg();
     }
 
     /********************
@@ -62,6 +70,7 @@
             sum += student_array[i].student_grade;
         }
         avg = sum / parseFloat(student_array.length);
+        $('#grade_average > span').html(avg);
     }
 
     function delete_student() {
@@ -85,15 +94,17 @@
 </head>
 
 <body>
-    <section id="student_info" class="col-sm-7">
+    <section id="student_info" class="col-sm-8">
         <div class="student_container well col-sm-12">
             <span class="col-sm-3">Student Name</span>
             <span class="col-sm-3">Student Course</span>
             <span class="col-sm-3">Student Grade</span>
+            <div id="grade_average" class="col-sm-3">Average: <span></span></div>
         </div>
+        <div class="student_list col-sm-12"></div>
+
     </section>
-    <div id="grade_average" class="col-sm-2 well">Average: <span></span></div>
-    <section id="student_input" class="well col-md-3">
+    <section id="student_input" class="well col-md-4">
         <input type="text" name="student_name" id="student_name" placeholder="Student Name">
         <input type="text" name="student_course" id="student_course" placeholder="Student Course">
         <input type="text" name="student_grade" id="student_grade" placeholder="Student Grade (0-100)">
@@ -102,6 +113,7 @@
         <button type="button" class="refresh_student">Refresh Students</button>
 
     </section>
+
 </body>
 
 </html>
