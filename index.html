@@ -30,25 +30,27 @@
     });
 
     function populate_student_display() {
-        for (var i = 0; i < pt_student_array.length; i++) {
+        //for (var i = 0; i < pt_student_array.length; i++) {
             var student_summary = $("<div>", {
                 class: 'student_result row',
             });
             var name_div = $("<div>", {
                 class: 'student_result col-md-4',
-                text: pt_student_array[i].student_name
+                text: pt_student_array.student_name
             });
             var course_div = $("<div>", {
                 class: 'student_result col-md-4',
-                text: pt_student_array[i].student_course
+                text: pt_student_array.student_course
             });
             var grade_div = $("<div>", {
                 class: 'student_result col-md-4',
-                text: pt_student_array[i].student_grade
+                text: pt_student_array.student_grade
             });
             $(".student_container").append(student_summary, name_div, course_div, grade_div);
-        };
-        clear_student_array();
+            
+        //};
+
+        //clear_student_array();
     };
 
     function clear_student_array() {
@@ -116,12 +118,12 @@
                 highest_index.push[i];
             }
         }
-        $('#highest_grade > span').html(highest_grade, " ", highest_index);
+        $('#highest_grade > span').html(highest_grade);
     }
 
     function pt_student_lowest_grade() {
         console.log("pt_student_lowest_grade is being called");
-        var lowest_grade= 100;
+        var lowest_grade= 101;
         for (var i = 0; i < pt_student_array.length; i++) {
             if (pt_student_array[i].student_grade < lowest_grade) {
                 lowest_grade = pt_student_array[i].student_grade;
@@ -132,7 +134,7 @@
                 lowest_index.push[i];
             }
         }
-        $('#lowest_grade > span').html(lowest_grade, " ", lowest_index);
+        $('#lowest_grade > span').html(lowest_grade);
     }
     </script>
 </head>
