@@ -10,6 +10,7 @@
     <script type="text/javascript">
     var student_grade_sum = 0;
     var student_grade_average = 0;
+    var student_average_array = [];
     var index = 0;
     var student_grade_as_float = 0;
     var highest_index = [];
@@ -30,27 +31,32 @@
     });
 
     function populate_student_display() {
-        //for (var i = 0; i < pt_student_array.length; i++) {
+        for (var i = 0; i < pt_student_array.length; i++) {
+            var delete_button = $("<button>",{
+              text: 'Delete Student',
+               type: 'button', 
+               class: 'button', 
+               id: 'delete_button',
+            });
+
             var student_summary = $("<div>", {
                 class: 'student_result row',
             });
             var name_div = $("<div>", {
-                class: 'student_result col-md-4',
-                text: pt_student_array.student_name
+                class: 'student_result col-md-3',
+                text: pt_student_array[i].student_name
             });
             var course_div = $("<div>", {
-                class: 'student_result col-md-4',
-                text: pt_student_array.student_course
+                class: 'student_result col-md-3',
+                text: pt_student_array[i].student_course
             });
             var grade_div = $("<div>", {
-                class: 'student_result col-md-4',
-                text: pt_student_array.student_grade
+                class: 'student_result col-md-3',
+                text: pt_student_array[i].student_grade
             });
-            $(".student_container").append(student_summary, name_div, course_div, grade_div);
-            
-        //};
-
-        //clear_student_array();
+            $(".student_container").append(student_summary, name_div, course_div, grade_div, delete_button);
+        };
+        clear_student_array();
     };
 
     function clear_student_array() {
@@ -60,7 +66,7 @@
     function call_student_info_and_average() {
 
         student_info();
-        pt_student_average_grade();
+        pt_student_average_array();
         clear_student_info();
         pt_student_highest_grade();
         pt_student_lowest_grade();
@@ -69,7 +75,7 @@
     function clear_student_info() {
         student_object.student_name = $('#student_name').val('');
         student_object.student_course = $('#student_course').val('');
-        student_object.student_grade = $('#student_grade').val(0);
+        student_object.student_grade = $('#student_grade').val(null);
     }
 
     function student_info() {
@@ -82,6 +88,8 @@
         student_object.student_course = $('#student_course').val();
         student_object.student_grade = parseFloat($('#student_grade').val());
         pt_student_array.push(student_object);
+        student_average_array.push(student_object);
+
         console.log("student name : ", student_object.student_name);
         console.log("student course : ", student_object.student_course);
         console.log("student grade : ", student_object.student_grade);
@@ -91,30 +99,26 @@
     }
 
 
-    function pt_student_average_grade() {
-        for (var i = 0; i < pt_student_array.length; i++) {
-            student_grade_as_float = parseFloat(pt_student_array[i].student_grade);
+    function pt_student_average_array() {
+        for (var i = 0; i < student_average_array.length; i++) {
+            student_grade_as_float = parseFloat(student_average_array[i].student_grade);
             console.log("student_grade_as_float: ", student_grade_as_float);
             student_grade_sum = parseFloat(student_grade_sum) + parseFloat(student_grade_as_float);
-            console.log("in the pt_student_average_grade function student grade sum: ", student_grade_sum);
-            console.log("in the pt_student_average_grade pt_student_array.length: ", pt_student_array.length);
+            console.log("in the student_average_array function student grade sum: ", student_grade_sum);
+            console.log("in the student_average_array student_average_array.length: ", student_average_array.length);
         }
-        student_grade_average = student_grade_sum / parseFloat(pt_student_array.length);
+        student_grade_average = student_grade_sum / parseFloat(student_average_array.length);
         student_grade_sum = 0;
-        console.log("in the pt_student_average_grade function : ", student_grade_average);
+        console.log("in the student_average_array function : ", student_grade_average);
         $('#grade_average > span').html(student_grade_average);
     }
 
     function pt_student_highest_grade() {
-        console.log("pt_student_highest_grade is being called");
-        var highest_grade= -1;
-        for (var i = 0; i < pt_student_array.length; i++) {
-            if (pt_student_array[i].student_grade > highest_grade) {
-                highest_grade = pt_student_array[i].student_grade;
-                highest_index = pt_student_array[i].student_name;
-                console.log("inside the highest grade function, highest grade: ", highest_grade);
-                console.log("inside the highest grade function, highest index: ", highest_index);
-            } else if (pt_student_array[i].student_grade == highest_grade) {
+        for (var i = 0; i < student_average_array; i++) {
+            if (student_average_array[i] > highest_grade) {
+                highest_grade = student_average_array[i];
+                highest_index = [i];
+            } else if (student_average_array[i] == highest_grade) {
                 highest_index.push[i];
             }
         }
@@ -122,15 +126,11 @@
     }
 
     function pt_student_lowest_grade() {
-        console.log("pt_student_lowest_grade is being called");
-        var lowest_grade= 101;
-        for (var i = 0; i < pt_student_array.length; i++) {
-            if (pt_student_array[i].student_grade < lowest_grade) {
-                lowest_grade = pt_student_array[i].student_grade;
-                lowest_index = pt_student_array[i].student_name;
-                console.log("inside the lowest grade function, lowest grade: ", lowest_grade);
-                console.log("inside the lowest grade function, lowest index: ", lowest_index);
-            } else if (pt_student_array[i].student_grade == lowest_grade) {
+        for (var i = 0; i < student_average_array[i]; i++) {
+            if (student_average_array[i] < lowest_grade) {
+                lowest_grade = student_average_array[i];
+                lowest_index = student_average_array[i];
+            } else if (student_average_array[i] == lowest_grade) {
                 lowest_index.push[i];
             }
         }
@@ -142,9 +142,9 @@
 <body>
     <section id="student_info">
         <div class="student_container row">
-            <span class="col-md-4 student_columns">Student Name</span>
-            <span class="col-md-4 student_columns">Student Course</span>
-            <span class="col-md-4 student_columns">Student Grade</span>
+            <span class="col-md-3 student_columns">Student Name</span>
+            <span class="col-md-3 student_columns">Student Course</span>
+            <span class="col-md-3 student_columns">Student Grade</span>
         </div>
     </section>
     <div id="grade_average" class="col-sm-2 col-sm-offset-10">Average: <span></span></div>
@@ -154,7 +154,7 @@
         <input type="text" name="student_name" class="student_input" id="student_name" placeholder="Student Name">
         <input type="text" name="student_course" class="student_input" id="student_course" placeholder="Student Course">
         <input type="text" name="student_grade" class="student_input" id="student_grade" placeholder="Student Grade (0-100)">
-        <button type="button" id="add_student">Add Student</button>
+        <button type="button" class="button" id="add_student">Add Student</button>
     </section>
 </body>
 
