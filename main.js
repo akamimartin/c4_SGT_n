@@ -8,11 +8,15 @@ function highlight(){
 		var grade = parseFloat(student_array[i].grade);
 		if (grade > highest_grade) {
 			highest_grade = grade;
-			grade.css('box-shadow', '0px 0px 10px yellow');
+			if ($('.inputed_grade').html() == highest_grade){
+				$('.inputed_grade').css('box-shadow', '0px 0px 10px yellow');
+			}
 		}
 		else if (grade < lowest_grade){
 			lowest_grade = grade;
-			grade.css('box-shadow', '0px 0px 10px red');
+			if ($('.inputed_grade').html() == lowest_grade){
+				$('.inputed_grade').css('box-shadow', '0px 0px 10px red');
+			}
 		}
 	}
 }
