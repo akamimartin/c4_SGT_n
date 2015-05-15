@@ -81,8 +81,9 @@ function display_style() {
 	});
 
 	$('#operations').css({
-		position: 'relative',
-		left: '20%',
+		position: 'absolute',
+		fontSize: '20px',
+		color: '#7f0000',
 	})
 }
 
