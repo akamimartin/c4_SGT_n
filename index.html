@@ -5,7 +5,16 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style>
+    #buttonid {
+        
+    }
+    
+    
+    
+    </style>
     <script>
+
     sum_of_grades = null;
     grades_array = [];
     highest = null;
@@ -38,8 +47,11 @@
     };
     
 
-   
-    function add_studentinfo() {
+
+            //containerinfo.append(name_output,course_output, grade_output);
+            //$(".student_container").append(containerinfo);
+        
+        function add_studentinfo() {
         var new_student = {
             names: $("#student_name").val(),
             course: $("#student_course").val(),
@@ -71,10 +83,13 @@
         var newdiv = $('<div class="student_data" "col-sm-12">');
         var name_output = $('<span class="col-sm-6">').text(student_object.names);
         var course_output = $('<span class="col-sm-4">').text(student_object.course);
-        var grade_output = $('<span class="col-sm-2">').text(student_object.grade);
+        var grade_output = $('<span class="col-sm-1">').text(student_object.grade);
+        var delete_output = $('<button class="col-sm-1" id="buttonid">').text("Delete");
+                
+                newdiv.append(name_output, course_output, grade_output,delete_output);
+                $('#student_info').append(newdiv);
         
-        newdiv.append(name_output, course_output, grade_output);
-        $('#student_info').append(newdiv);  
+          
     }
 
     function resetStudentContainer(){
@@ -93,16 +108,17 @@
         <div class="student_container">
             <span class="col-sm-6">Student Name</span>
             <span class="col-sm-4">Student Course</span>
-            <span class="col-sm-2">Student Grade</span>
+            <span class="col-sm-1">Student Grade</span>
         </div>
     </section>
-    <div id="grade_average" class="col-sm-2 col-sm-offset-10">Average: <span></span></div>
+    <div id="grade_average" class="col-sm-2 col-sm-offset-10">Average: <span></span>
+    </div>
     <section id="student_input">
         <input type="text" name="student_name" id="student_name" placeholder="Student Name">
         <input type="text" name="student_course" id="student_course" placeholder="Student Course">
         <input type="text" name="student_grade" id="student_grade" placeholder="Student Grade (0-100)">
         <button type="button" onclick="add_studentinfo()">Add Student</button>
-        <button type="button">Delete Student</button>
+        <!--<button type="button">Delete Student</button> -->
     </section>
 </body>
 
