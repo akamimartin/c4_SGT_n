@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
     <script src="student.js"></script>
 </head>
 
@@ -19,14 +18,19 @@
         </div>
     </section>
     <div id="grade_average" class="col-sm-2 col-sm-offset-10">Average: <span></span></div>
-    <section id="student_input">
-        <input type="text" name="student_name" id="student_name" placeholder="Student Name">
-        <input type="text" name="student_course" id="student_name" placeholder="Student Course">
-        <input type="text" name="student_grade" id="student_grade" placeholder="Student Grade (0-100)">
-        <button type="button" class="s_add">Add Student</button>
-        <button type="button" class="s_delete">Delete</button>
-        <button type="button" onclick="average_grade()">Average Grade</button><!--Test Button-->
-        <input id="student_object">
+    <section id="student_info">
+        <input type="text" name="student_name" id="student_name" class="col-md-2" placeholder="Student Name">
+        <input type="text" name="student_course" id="student_name" class="col-md-2" placeholder="Student Course ">
+        <input type="text" name="student_grade" id="student_grade" class="col-md-2" placeholder="Student Grade (0-100)">
+        <button type="button" class="s_add col-md-1">Add Student</button>
+        <button type="button" class="s_delete col-md-1">Delete</button>
+        <!--======================KC Function Test Buttons=======================-->
+        <button type="button" onclick="average_grade()">Average Grade</button>
+        <button type="button" onclick="high_grade()">High</button>
+        <button type="button" onclick="low_grade()">Low</button>
+        <input id="student_object" readonly class="col-md-4">
+        <!--======================KC Function Test Buttons=======================-->
+        </div>
     </section>
 </body>
 

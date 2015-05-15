@@ -1,9 +1,16 @@
 var student_array = [];
+var students = $('#student_name').val() + $('#student_course').val() + $('#student_grade').val();
 var student_object = {
     name: null,
     course: null,
     grade: null
 };
+
+
+function add_input() {
+
+    $('#student_object').val(students);
+}
 
 function add_student() {
     var addstudent = Object.create(student_object);
@@ -22,15 +29,37 @@ function average_grade()
     var sum = 0;
     var average = 0;
 
-    for (i = 0; i < student_array.length; i++) 
-    {
-        sum += parseFloat(student_array[i].grade);
+        for (i = 0; i < student_array.length; i++) 
+        {
+            sum += parseFloat(student_array[i].grade);
         
-    }
+        }   
     average = parseFloat(sum) / student_array.length;
-        console.log('Average: ',average);
+    console.log('Average: ',average);
 }
 
-function highlow_grade() {
+function high_grade() 
+{
+    var max = 0;
+        for (i = 0; i < student_array.length; i++) 
+        {
+            if (student_array[i].grade > student_array[i+1].grade)
+            {
+                 max = student_array[i].grade;
+                 console.log('Max:', max);
+            }
+        }
+}
 
+function low_grade()
+{
+   var min = 0;
+        for (i = 0; i < student_array.length; i++) 
+        {
+            if (student_array[i].grade < student_array[i+1].grade)
+            {
+                 min = student_array[i].grade;
+                 console.log('Min:', min);
+            }
+        }
 }
