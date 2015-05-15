@@ -1,10 +1,75 @@
-#grade_average h3{
-	margin-top: 27px;
+#grade_average h3 {
+    margin-top: 27px;
 }
-#grade_average h4{
-	margin-top: 23px;
+
+#grade_average h4 {
+    margin-top: 23px;
 }
-.input-group{
-	margin:3px;
-	width:100%;
+
+.input-group {
+    margin: 3px;
+    width: 100%;
 }
+
+.student-row {
+
+    -webkit-animation-name: fadeOutBG;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 2s;
+
+    
+    -moz-animation-name: fadeOutBG;
+    -moz-animation-timing-function: ease-in-out;    
+    -moz-animation-duration: 2s;
+    
+    -o-animation-name: fadeOutBG;
+    -o-animation-timing-function: ease-in-out;
+    -o-animation-duration: 2s;
+    
+    animation-name: fadeOutBG;
+    animation-timing-function: ease-in-out;
+    animation-duration: 2s;
+}
+
+@-moz-keyframes fadeOutBG {
+    0% {
+        background: rgba(223, 240, 216, 1);
+        color:#3c763d;
+    }
+    50% {
+        background: rgba(223, 240, 216, 1);
+        color:#3c763d;
+    }
+    100% {
+        background: rgba(223, 240, 216, 0);
+        color:#000;
+    }
+}
+
+@-webkit-keyframes fadeOutBG {
+    0% {
+        background: rgba(223, 240, 216, 1);
+        color:#3c763d;
+    }
+    50% {
+        background: rgba(223, 240, 216, 1);
+        color:#3c763d;
+    }
+    100% {
+        background: rgba(223, 240, 216, 0);
+        color:#000;
+    }
+}
+
+.
+/*student-row {
+    background: rgba(255, 0, 0, 1);
+}
+
+.new-student-row {
+    background: rgba(255, 0, 0, 0);
+    -webkit-transition: background 1.5s ease-out;
+    -moz-transition: background 1.5s ease-out;
+    -o-transition: background 1.5s ease-out;
+    transition: background 1.5s ease-out;
+}*/
