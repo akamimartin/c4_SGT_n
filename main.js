@@ -2,22 +2,37 @@ var student_array = [];
 var average = 0;
 var highest_grade = -1;
 var lowest_grade = 101;
+var highest_array = [];
+var lowest_array = [];
 
-function highlight(){
+
+function highest_lowest_grade(){
+	
 	for (var i = 0; i < student_array.length; i++){
 		var grade = parseFloat(student_array[i].grade);
 		if (grade > highest_grade) {
+			highest_array = [i];
 			highest_grade = grade;
-			if ($('.inputed_grade').html() == highest_grade){
-				$('.inputed_grade').css('box-shadow', '0px 0px 10px yellow');
-			}
 		}
+		else if (grade == highest_grade){
+			highest_array.push(i);
+		}
+
 		else if (grade < lowest_grade){
+			lowest_array = [i];
 			lowest_grade = grade;
-			if ($('.inputed_grade').html() == lowest_grade){
-				$('.inputed_grade').css('box-shadow', '0px 0px 10px red');
-			}
 		}
+		else if(grade == lowest_grade){
+			lowest_array.push(i);
+		}
+	}
+}
+function highlight(){
+	for (var i = 0; i < highest_array.length; i++){
+		student_array[highest_array[i]].grade_element.addClass('highest');
+	}
+	for (var i = 0; i < lowest_array.length); i++){
+		student_array[lowest_array[i]].grade_element.addClass('lowest');
 	}
 }
 //finds the average of the class
@@ -53,6 +68,7 @@ function add_studentinfo() {
     names: $("#student_name").val(),
     course: $("#student_course").val(),
     grade: $("#student_grade").val(),
+    grade_element: grade_div
   }
 
   student_array.push(student);
@@ -109,6 +125,7 @@ $(document).ready(function(){
 	add_studentinfo();
 	average_grade();
 	display_average();
+	highest_lowest_grade();
 	highlight();
 	});
 });
