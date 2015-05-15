@@ -30,13 +30,13 @@ function highLowHighlight(){
 		}
 	}
 
+	console.log("row", row, "High", highIndex, "low", lowIndex);
+
 	row.removeClass("high");
 	row.removeClass("low");
 
-	if(highIndex != 0 && lowIndex != 0 && highIndex != lowIndex){	
-		row(highIndex).addClass("high");
-		row(lowIndex).addClass("low");
-	}else{
-		console.log("Error with highLowHighlight");
+	if(highIndex != lowIndex){	
+		$(row[highIndex]).addClass("high");
+		$(row[lowIndex]).addClass("low");
 	}
 }
