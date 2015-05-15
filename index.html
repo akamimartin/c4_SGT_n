@@ -17,6 +17,8 @@
         student_grade: null
     }
     var color_count = 0;
+    var highest_grade_indeces = [0];
+    var lowest_grade_indeces = [0];
 
 
     /***************************
@@ -33,6 +35,7 @@
         student_array.push(addstudent);
         $('input').val('');
     }
+
     function list_students(){
         var background_color = '';
         var color = '';
@@ -60,9 +63,7 @@
     calc_avg();
     }
 
-    /********************
-     * Program Execution
-     ********************/
+
     function calc_avg() {
         var avg = 0;
         var sum = 0;
@@ -82,6 +83,50 @@
             student_array.splice(id, 1);
         }
     }
+
+    function high_low() {
+
+        var highest_grade = student_array[0].student_grade;
+        var lowest_grade = student_array[0].student_grade;
+        for (var i = 0; i < student_array.length; i++) {
+            //highest check
+            if (student_array[i].student_grade == highest_grade) {
+                highest_grade_indeces.push(i);
+            }
+            if (student_array[i].student_grade > highest_grade) {
+                if (highest_grade_indeces.length > 1) {
+                    highest_grade_indeces = [0];
+                }
+                highest_grade_indeces[0] = i;
+                highest_grade = student_array[i].student_grade;
+            }
+            if (student_array[i].student_grade == lowest_grade) {
+                lowest_grade_indeces.push(i)
+            }
+            //lowest check
+            if (student_array[i].student_grade < lowest_grade) {
+                if (lowest_grade_indeces.length > 1) {
+                    lowest_grade_indeces = [0];
+                }
+                lowest_grade_indeces[0] = i;
+                lowest_grade = student_array[i].student_grade;
+            }
+
+        }
+    }
+
+    function highlight_grade() {
+            for (var i = 0; i < highest_grade_indeces.length; i++) {
+                $('.sgrade').eq(highest_grade_indeces[i]).css('color', 'green');
+
+            }
+            for (var i = 0; i < lowest_grade_indeces.length; i++) {
+                $('.sgrade').eq(lowest_grade_indeces[i]).css('color', 'red');
+            }
+        }
+        /********************
+         * Program Execution
+         ********************/
 
     $(document).ready(function() {
         $('.add_student').on('click', add_student);
@@ -111,7 +156,6 @@
         <button type="button" class="add_student">Add Student</button>
         <button type="button" class="delete_student">Delete Student</button>
         <button type="button" class="refresh_student">Refresh Students</button>
-
     </section>
 
 </body>
