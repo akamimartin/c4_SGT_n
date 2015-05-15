@@ -15,6 +15,7 @@
         student_course: null,
         student_grade: null
     }
+    var color_count = 0;
 
 
     /***************************
@@ -27,6 +28,28 @@
         addstudent.student_course = $('#student_course').val();
         addstudent.student_grade = parseFloat($('#student_grade').val());
         student_array.push(addstudent);
+    }
+    function list_students(){
+        var color = '';
+        
+        $('.student_information').empty();
+        for(var i = 0; i<student_array.length; i++){
+            if(color_count == 0){
+            color = 'red'
+            color_count++;
+        }
+        else {
+            color = 'green';
+            color_count--;
+        }
+        var student_info_container = $('<div>').addClass('student_information col-sm-12 well').css('background-color', color);
+        var sname = $('<div>').addClass('sname col-sm-3').text( student_array[i].student_name);
+        var scourse = $('<div>').addClass('scourse col-sm-3').text( student_array[i].student_course);
+        var sgrade = $('<div>').addClass('sgrade col-sm-3').text(student_array[i].student_grade);
+        var delete_button = $('<button>').addClass('delete col-sm-2').text('Delete Student');
+        $(student_info_container).append(sname, scourse, sgrade, delete_button)
+        $('#student_info').append(student_info_container);
+    }
     }
 
     /********************
@@ -54,26 +77,30 @@
     $(document).ready(function() {
         $('.add_student').on('click', add_student);
         $('.delete_student').on('click', delete_student);
+        $('.refresh_student').on('click', list_students)
+
 
     });
     </script>
 </head>
 
 <body>
-    <section id="student_input" class="col-sm-10">
+    <section id="student_info" class="col-sm-7">
         <div class="student_container well col-sm-12">
-            <span class="col-sm-4">Student Name</span>
-            <span class="col-sm-4">Student Course</span>
-            <span class="col-sm-2">Student Grade</span>
+            <span class="col-sm-3">Student Name</span>
+            <span class="col-sm-3">Student Course</span>
+            <span class="col-sm-3">Student Grade</span>
         </div>
     </section>
     <div id="grade_average" class="col-sm-2 well">Average: <span></span></div>
-    <section id="student_info" class="well col-md-2 col-md-offset-10">
+    <section id="student_input" class="well col-md-3">
         <input type="text" name="student_name" id="student_name" placeholder="Student Name">
         <input type="text" name="student_course" id="student_course" placeholder="Student Course">
         <input type="text" name="student_grade" id="student_grade" placeholder="Student Grade (0-100)">
         <button type="button" class="add_student">Add Student</button>
         <button type="button" class="delete_student">Delete Student</button>
+        <button type="button" class="refresh_student">Refresh Students</button>
+
     </section>
 </body>
 
