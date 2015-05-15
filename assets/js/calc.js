@@ -13,12 +13,15 @@ function calcAvg(){
 }
 
 function displayAvg(){
-	$("#avg").text(calcAvg());
+	$(".avg").text(calcAvg());
 }
 
 function highLowHighlight(){
 	var row = $(".student-row");
 	var loop = studentArray.length;
+	if(loop < 1){
+		return;
+	}
 	var highIndex = 0; 
 	var lowIndex = 0;
 	var highGrade = studentArray[highIndex].grade;
@@ -37,11 +40,11 @@ function highLowHighlight(){
 		}
 	}
 
-	row.removeClass("high");
-	row.removeClass("low");
+	row.removeClass("alert-success");
+	row.removeClass("alert-danger");
 
 	if(highIndex != lowIndex){	
-		$(row[highIndex]).addClass("high");
-		$(row[lowIndex]).addClass("low");
+		$(row[highIndex]).addClass("alert-success");
+		$(row[lowIndex]).addClass("alert-danger");
 	}
 }

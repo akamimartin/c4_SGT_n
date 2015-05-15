@@ -1,13 +1,13 @@
 //Main JS File
 var studentArray = [];
-var student = {}; 
 
 $(document).ready(function(){
 
 	$("#student_input").on("click", "button", function(){
-		addStudent();
-		displayAvg();
-		highLowHighlight();
+		if(addStudent()){
+			displayAvg();
+			highLowHighlight();
+		}
 	})
 
 });
@@ -19,7 +19,7 @@ function addStudent(){
 	var nameValue = nameIn.val();
 	var courseValue = courseIn.val();
 	var gradeValue = parseInt(gradeIn.val());
-	var errorValue = false;
+	var error = false;
 
 
 	if(nameValue == ""){
@@ -72,17 +72,21 @@ function addStudent(){
 	}
 
 	if(!error){
-		student.name = name;
-		student.course = course;
-		student.grade = grade;
+		var student = {};
+		student.name = nameValue;
+		student.course = courseValue;
+		student.grade = gradeValue;
 		studentArray.push(student);
 		student = {};
 
-		var row = $("<div class='student-row'><span class='col-sm-5'>" + name + "</span><span class='col-sm-3'>" + course + "</span><span class='col-sm-2'>" + grade + "</span><span class='col-sm-2'><button type='button' class='del'>Delete</button></span>")
+		var row = $("<div class='student_container panel-body'><div class='student-row row'><div class='col-sm-4 col-xs-3'>" + nameValue + "</div><div class='col-sm-3 col-xs-3'>" + courseValue + "</div><div class='col-sm-2 col-xs-3'>" + gradeValue + "</div><div class='col-sm-2 col-xs-2'><button class='btn btn-danger btn-sm'><span class='glyphicon glyphicon-trash' aria-hidden='true'> </span><span class='hidden-xs'>Remove</span></button></div></div></div>");
 		row.appendTo("#student_info");
 
 		nameIn.val('');
 		courseIn.val('');
 		gradeIn.val('');
+
+		return true;
 	}
+	return false;
 }
