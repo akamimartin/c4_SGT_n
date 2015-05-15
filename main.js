@@ -24,6 +24,10 @@ $(document).ready(function(){
 var student_array= [];
 
 function add_studentinfo() {
+  $('#name').html($("#student_name").val());
+  $('#course').html($("#student_course").val());
+  $('#grade').html($("#student_grade").val());
+
   var student = {
     names: $("#student_name").val(),
     course: $("#student_course").val(),
