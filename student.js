@@ -1,4 +1,5 @@
 var student_array = [];
+var students = $('#student_name').val() + $('#student_course').val() + $('#student_grade').val();
 var student_object = {
     name: null,
     course: null,
@@ -6,7 +7,8 @@ var student_object = {
 };
 
 function add_input() {
-    $('#student_object').append();
+
+    $('#student_object').val(students);
 }
 
 function add_student() {
