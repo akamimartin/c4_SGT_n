@@ -40,11 +40,11 @@ function highLowHighlight(){
 		}
 	}
 
-	row.removeClass("alert-success");
-	row.removeClass("alert-danger");
+	row.removeClass("list-group-item-success");
+	row.removeClass("list-group-item-danger");
 
 	if(highIndex != lowIndex){	
-		$(row[highIndex]).addClass("alert-success");
-		$(row[lowIndex]).addClass("alert-danger");
+		$(row[highIndex]).addClass("list-group-item-success");
+		$(row[lowIndex]).addClass("list-group-item-danger");
 	}
 }
