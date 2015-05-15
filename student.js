@@ -17,14 +17,18 @@ $(document).ready(function() {
     $('.s_add').on('click', add_student);
 });
 
-function average_grade() {
+function average_grade() 
+{
     var sum = 0;
     var average = 0;
 
-    for (i = 0; i < student_array.length; i++) {
-        sum += student_array[i];
-        average = sum / student_object.grade;
+    for (i = 0; i < student_array.length; i++) 
+    {
+        sum += parseFloat(student_array[i].grade);
+        
     }
+    average = parseFloat(sum) / student_array.length;
+        console.log('Average: ',average);
 }
 
 function highlow_grade() {
