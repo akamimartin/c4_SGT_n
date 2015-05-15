@@ -33,30 +33,30 @@
 
 @-moz-keyframes fadeOutBG {
     0% {
-        background: rgba(223, 240, 216, 1);
-        color:#3c763d;
+        background: rgba(252, 248, 227, 1);
+        color:#8a6d3b;
     }
     50% {
-        background: rgba(223, 240, 216, 1);
-        color:#3c763d;
+        background: rgba(252, 248, 227, 1);
+        color:#8a6d3b;
     }
     100% {
-        background: rgba(223, 240, 216, 0);
+        background: rgba(252, 248, 227, 0);
         color:#000;
     }
 }
 
 @-webkit-keyframes fadeOutBG {
     0% {
-        background: rgba(223, 240, 216, 1);
-        color:#3c763d;
+        background: rgba(252, 248, 227, 1);
+        color:#8a6d3b;
     }
     50% {
-        background: rgba(223, 240, 216, 1);
-        color:#3c763d;
+        background: rgba(252, 248, 227, 1);
+        color:#8a6d3b;
     }
     100% {
-        background: rgba(223, 240, 216, 0);
+        background: rgba(252, 248, 227, 0);
         color:#000;
     }
 }

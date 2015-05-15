@@ -23,9 +23,11 @@ $(document).ready(function(){
 function updateStudentList(){
 	var contentContainer = $('#student_info .panel-body');
 	if(studentArray.length > 0){
-		contentContainer.html('');
+		contentContainer.find('h5').remove();
 		$.each(studentArray, function(){
-			contentContainer.append(this.elm);
+			if(!$.contains(contentContainer[0], this.elm[0])){
+				contentContainer.append(this.elm);
+			}
 		});
 	}else{
 		contentContainer.append('<h5 class="col-sm-12 text-center">No Student info</h5>');
