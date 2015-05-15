@@ -1,8 +1,22 @@
 var student_array = [];
 var average = 0;
+var highest_grade = -1;
+var lowest_grade = 101;
 
-
-
+function highlight(){
+	for (var i = 0; i < student_array.length; i++){
+		var grade = parseFloat(student_array[i].grade);
+		if (grade > highest_grade) {
+			highest_grade = grade;
+			grade.css('box-shadow', '0px 0px 10px yellow');
+		}
+		else if (grade < lowest_grade){
+			lowest_grade = grade;
+			grade.css('box-shadow', '0px 0px 10px red');
+		}
+	}
+}
+//finds the average of the class
 function average_grade(){
 	var total = 0;
 	for (var i = 0; i < student_array.length; i++){
@@ -13,7 +27,7 @@ function average_grade(){
 	average = total/student_array.length;
 }
 
-
+//displays the average
 function display_average(){
 	$('#operations').html(average);
 }
@@ -23,6 +37,7 @@ function display_average(){
 var student_array= [];
 
 function add_studentinfo() {
+
   $('#name').html($("#student_name").val());
   $('#course').html($("#student_course").val());
   $('#grade').html($("#student_grade").val());
@@ -82,6 +97,7 @@ $(document).ready(function(){
 	add_studentinfo();
 	average_grade();
 	display_average();
+	highlight();
 	});
 });
 
