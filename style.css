@@ -1,0 +1,10 @@
+
+input {
+    width: 100%
+}
+
+.delete {
+    border-radius: 10px;
+    color: black;
+    background: rgb(245, 245, 245);
+}
