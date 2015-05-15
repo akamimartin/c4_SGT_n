@@ -8,20 +8,35 @@
     <script>
     sum_of_grades = null;
     grades_array = [];
-    highest_lowest = [];
+    highest = null;
+    lowest = null
     var student_array = [];
 
     function averageGrade() {
         for (var i = 0; i < student_array.length; i++) {
+            console.log('i'+ i);
+            console.log('student_array[i].grade: '+ student_array[i].grade)
             grades_array.push(student_array[i].grade);
-
             sum_of_grades += parseFloat(student_array[i].grade);
+            console.log('sum_of_grades'+ sum_of_grades);
         }
-        highest_lowest.push(grades_array.sort[0]);
-        highest_lowest.push(grades_array.sort[-1]);
+        console.log('grades_array: '+ grades_array);
+        console.log('sorted grades array ' + grades_array.sort());
+        highest = grades_array.sort()[grades_array.length - 1];
+        lowest = grades_array.sort()[0];
+        console.log("highest: "+ highest);
+
+        console.log('lowest: '+ lowest);
+        
         average_of_grades = sum_of_grades / student_array.length;
+        sum_of_grades = null;
+        highest_lowest=[];
+        grades_array=[];
+        console.log('average_of_grades: '+ average_of_grades);
+        $('#grade_average > span').text(null);
+      $('#grade_average > span').append(average_of_grades);
     };
-    //$('#grade_average > span').append(average_of_grades);
+    
 
    
     function add_studentinfo() {
@@ -31,31 +46,40 @@
             grade: $("#student_grade").val()
         }
 
-        student_array.push(new_student);
-        
-        for (var i = 0; i < student_array.length; i++) {
-            /*  $('<div>',{
-                class: "student_container0",
-              }); */
-            var newdiv = $('<div class="student_data" "col-sm-12">');
-            var name_output = $('<span class="col-sm-6">').text(student_array[i].names);
-            var course_output = $('<span class="col-sm-4">').text(student_array[i].course);
-            var grade_output = $('<span class="col-sm-2">').text(student_array[i].grade);
-            //if (i==0){
-              //refresh();
-           // };
-            newdiv.append(name_output, course_output, grade_output);
-            $('#student_info').append(newdiv);
-            console.log("student_array=" + student_array[i]);
-            console.log("student array at " + i + " = ", student_array[i]);
+        student_array.push(new_student);  
 
-        }
+        display_single_student(student_array[student_array.length-1]);
+
+     
+        
+        averageGrade();
         
     }
+    function display_all_students(){
+      resetStudentContainer();
+        for (var i = 0; i < student_array.length; i++) {
 
-    function list_students(){
+            display_single_student(student_array[i]);
+
+            console.log("student_array=" + student_array[i]);
             
-            $('#student_info').remove($('.student_data'));
+
+        }  
+    }
+    function display_single_student(student_object)
+    {
+        var newdiv = $('<div class="student_data" "col-sm-12">');
+        var name_output = $('<span class="col-sm-6">').text(student_object.names);
+        var course_output = $('<span class="col-sm-4">').text(student_object.course);
+        var grade_output = $('<span class="col-sm-2">').text(student_object.grade);
+        
+        newdiv.append(name_output, course_output, grade_output);
+        $('#student_info').append(newdiv);  
+    }
+
+    function resetStudentContainer(){
+            
+            $('.student_data').remove();
 
 
         //containerinfo.append(name_output,course_output, grade_output);
