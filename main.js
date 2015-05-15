@@ -13,21 +13,17 @@ function highest_lowest_grade(){
 		
 		if (grade == highest_grade){
 			highest_array.push(i);
-			console.log('highest array is ', highest_array);
 		}
 		else if (grade > highest_grade) {
 			highest_array = [i];
 			highest_grade = grade;
-			console.log('highest array is ', highest_array);
 		}
 		else if (grade < lowest_grade){
 			lowest_array = [i];
 			lowest_grade = grade;
-			console.log('lowest array is ', lowest_array);
 		}
 		else if(grade == lowest_grade){
 			lowest_array.push(i);
-			console.log('lowest array is ', lowest_array);
 		}
 	}
 }
