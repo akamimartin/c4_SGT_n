@@ -36,23 +36,28 @@
               text: 'Delete Student',
                type: 'button', 
                class: 'button', 
-               id: 'delete_button',
+               id: 'delete_button'
             });
 
             var student_summary = $("<div>", {
-                class: 'student_result row',
+                class: 'student_result row'
+                
             });
             var name_div = $("<div>", {
                 class: 'student_result col-md-3',
                 text: pt_student_array[i].student_name
+                //id: 'id[i]'
             });
             var course_div = $("<div>", {
                 class: 'student_result col-md-3',
                 text: pt_student_array[i].student_course
+                //id: 'id[i]'
             });
             var grade_div = $("<div>", {
                 class: 'student_result col-md-3',
                 text: pt_student_array[i].student_grade
+                //id: 'student_summary_id + i',
+                //id: 'id[i]'
             });
             $(".student_container").append(student_summary, name_div, course_div, grade_div, delete_button);
         };
@@ -123,6 +128,7 @@
             }
         }
         $('#highest_grade > span').html(highest_grade);
+        //$('#student_summary_id[i]').addClass('.highlight_high');
     }
 
     function pt_student_lowest_grade() {
@@ -135,6 +141,7 @@
             }
         }
         $('#lowest_grade > span').html(lowest_grade);
+        //$('#student_summary_id[i]').addClass('.highlight_low');
     }
     </script>
 </head>
@@ -146,16 +153,16 @@
             <span class="col-md-3 student_columns">Student Course</span>
             <span class="col-md-3 student_columns">Student Grade</span>
         </div>
-    </section>
-    <div id="grade_average" class="col-sm-2 col-sm-offset-10">Average: <span></span></div>
-    <div id="highest_grade" class="col-sm-2 col-sm-offset-10">Highest: <span></span></div>
-    <div id="lowest_grade" class="col-sm-2 col-sm-offset-10">Lowest: <span></span></div>
-    <section id="student_input">
         <input type="text" name="student_name" class="student_input" id="student_name" placeholder="Student Name">
         <input type="text" name="student_course" class="student_input" id="student_course" placeholder="Student Course">
         <input type="text" name="student_grade" class="student_input" id="student_grade" placeholder="Student Grade (0-100)">
         <button type="button" class="button" id="add_student">Add Student</button>
     </section>
+        <div class="student_grade_info">
+          <div id="grade_average" class="col-sm-2 col-sm-offset-10">Average: <span></span></div>
+          <div id="highest_grade" class="col-sm-2 col-sm-offset-10">Highest: <span></span></div>
+          <div id="lowest_grade" class="col-sm-2 col-sm-offset-10">Lowest: <span></span></div>
+    </div>
 </body>
 
 </html>

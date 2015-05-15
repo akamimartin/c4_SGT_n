@@ -31,4 +31,11 @@
 	background-color: #c0392b;
 	border-radius: 8px;
 }
+
+.highlight_high{
+	background: teal;
+}
+
+.highlight_low{
+	background: red;
 }
