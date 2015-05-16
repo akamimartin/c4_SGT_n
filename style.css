@@ -8,6 +8,9 @@ input {
     color: black;
     background: rgb(245, 245, 245);
 }
+.delete:focus {
+	display: none;
+}
 .alert {
 	margin-top: 5%;
 }

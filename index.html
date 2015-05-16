@@ -24,10 +24,23 @@
     /***************************
      *   Function definitions
      *******************************/
+
+     /*************************************************
+      * add_student- creates student object and pushes onto student_array
+      * 
+      *************************************/
     function add_student() {
         if ($('#student_name').val() == '' || $('#student_course').val() == '' || $('#student_grade').val() == '') {
-          var checkInputAlert = $('<div>').addClass('alert alert-danger col-sm-12 col-md-12').text('Please fill out form completely');
+          $('.alert').remove();
+          var checkInputAlert = $('<div>').addClass('alert alert-danger col-sm-12 col-md-12').text('Please fill out form completely.');
           $('#student_input').append(checkInputAlert);
+          return;
+        }
+        if(parseFloat($('#student_grade').val()) >= 101 || parseFloat($('#student_grade').val()) <= -1)
+        {
+          $('.alert').remove();
+          var invalidNumAlert = $('<div>').addClass('alert alert-danger col-sm-12 col-md-12').text('Please enter a valid number.');
+          $('#student_input').append(invalidNumAlert);
           return;
         }
         $('.alert').remove();
@@ -40,6 +53,10 @@
         list_students();
     }
 
+    /*************************************************
+      *
+      * 
+      *************************************/
     function list_students() {
         var background_color = '';
         var color = '';
@@ -71,6 +88,10 @@
       }
     }
 
+      /*************************************************
+      *
+      * 
+      *************************************/
 
     function calc_avg() {
         var avg = 0;
@@ -83,6 +104,10 @@
         $('#grade_average > span').html(avg);
     }
 
+      /*************************************************
+      *
+      * 
+      *************************************/
     function delete_student() {
         var id = prompt("Please input the ID of the student you would like to delete");
         if (student_array[id] == undefined) {
@@ -93,6 +118,10 @@
         }
     }
 
+      /*************************************************
+      *
+      * 
+      *************************************/
     function high_low() {
         highest_grade_indeces = [0];
         lowest_grade_indeces = [0];
@@ -126,6 +155,10 @@
     }
 
 
+      /*************************************************
+      *
+      * 
+      *************************************/
     function highlight_grade() {
             var lowest_style = {
                 color: 'red',
@@ -146,6 +179,8 @@
                 $('.sgrade').eq(lowest_grade_indeces[i]).css(lowest_style).addClass('glyphicon glyphicon-alert');
             }
         }
+
+        
         /********************
          * Program Execution
          ********************/
