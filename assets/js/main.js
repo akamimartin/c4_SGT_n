@@ -31,51 +31,31 @@ function addStudent(){
 
 	if(nameValue == ""){
 		var nameError = "Please enter a name";
-		if(nameIn.attr("data-toggle") != "popover"){
-			nameIn.attr("data-container", "body");
-			nameIn.attr("data-toggle", "popover");
-			nameIn.attr("data-placement", "top");
-			nameIn.attr("data-trigger", "manual");
-			nameIn.attr("title", "Input Error");
-		}
-		nameIn.attr("data-content", nameError);
-
-		nameIn.popover('show');
+		var originalTextName = nameIn.attr("placeholder");
+		nameIn.addClass("input-error");
+		nameIn.attr("placeholder", nameError);
 		error = true;
-		setTimeout(function(){nameIn.popover('hide')}, 3000);
+		setTimeout(function(){nameIn.removeClass("input-error"); nameIn.attr("placeholder", originalTextName)}, 3000);
 	}
 	if(courseValue == ""){
 		var courseError = "Please enter a course";
-		if(courseIn.attr("data-toggle") != "popover"){
-			courseIn.attr("data-container", "body");
-			courseIn.attr("data-toggle", "popover");
-			courseIn.attr("data-placement", "left");
-			courseIn.attr("data-trigger", "manual");
-			courseIn.attr("title", "Input Error");
-		}
-		courseIn.attr("data-content", courseError);
-
-		courseIn.popover('show');
+		var originalTextCourse = courseIn.attr("placeholder");
+		courseIn.addClass("input-error");
+		courseIn.attr("placeholder", courseError);
 		error = true;
-		setTimeout(function(){courseIn.popover('hide')}, 3000);
+		setTimeout(function(){courseIn.removeClass("input-error"); courseIn.attr("placeholder", originalTextCourse)}, 3000);
 	}
 	if(gradeValue < 0 || gradeValue > 100 || isNaN(gradeValue)){
 		var gradeError = "Please enter numbers only";
 		if(gradeValue < 0 || gradeValue > 100){
 			gradeError = "Please enter a number between 0 and 100";
 		}
-		if(gradeIn.attr("data-toggle") != "popover"){
-			gradeIn.attr("data-container", "body");
-			gradeIn.attr("data-toggle", "popover");
-			gradeIn.attr("data-placement", "bottom");
-			gradeIn.attr("data-trigger", "manual");
-			gradeIn.attr("title", "Input Error");
-		}
-		gradeIn.attr("data-content", gradeError);
-
-		gradeIn.popover('show');
+		var originalTextCourse = gradeIn.attr("placeholder");
+		gradeIn.addClass("input-error");
+		gradeIn.val('');
+		gradeIn.attr("placeholder", gradeError);
 		error = true;
-		setTimeout(function(){gradeIn.popover('hide')}, 3000);
+		setTimeout(function(){gradeIn.removeClass("input-error"); gradeIn.attr("placeholder", originalTextCourse)}, 3000);
 	}
 
 	if(!error){
