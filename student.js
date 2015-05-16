@@ -10,15 +10,15 @@ var student_object = {
 
 function add_student() {
 
-    var addstudent = Object.create(student_object);
-    addstudent.s_name = $('#student_name').val();
-    addstudent.s_course = $('#student_course').val();
-    addstudent.s_grade = parseFloat($('#student_grade').val());
-    student_array.push(addstudent);
-    //show_student();
-    console.log(student_array)
-}
-
+        var addstudent = Object.create(student_object);
+        addstudent.s_name = $('#student_name').val();
+        addstudent.s_course = $('#student_course').val();
+        addstudent.s_grade = parseFloat($('#student_grade').val());
+        student_array.push(addstudent);
+        //show_student();
+        console.log(student_array)
+    }
+    //got the show_student button to work we can also put it inside the add_student button by removing the comment before the show_student() function
 function show_student() {
     console.log('button worked')
 
