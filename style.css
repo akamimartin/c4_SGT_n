@@ -32,10 +32,18 @@
 	border-radius: 8px;
 }
 
+<<<<<<< HEAD
 .highlight_high{
 	background: teal;
 }
 
 .highlight_low{
 	background: red;
+=======
+#grade_average{
+	font-family: 'Oswald', sans-serif;
+	font-size: 16px;
+	text-align:center;
+}
+>>>>>>> 1d7949901b49497e6a0fbe6d71398cc029041158
 }
