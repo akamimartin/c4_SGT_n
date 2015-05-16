@@ -21,23 +21,37 @@ function add_student() {
 
 function show_student() {
     console.log('button worked')
-    var output_stud = $('<div class="student_info col-md-12">');
-    var name_o = $('<div class="s_name col-md-6">');
-    var course_o = $('<div class="s_course col-md-2">');
-    var grade_o = $('<div class="s_grade col-md-2">');
-    var delete_o = $('<button type="button" class="col-md-2">delete</button>');
+    var output_stud = $('<div>', {
+        class: "student_info col-md-12",
+    });
+    var name_o = $('<div>', {
+        class: "s_name col-md-3"
+    });
+    var course_o = $('<div>', {
+        class: "s_course col-md-3"
+    });
+    var grade_o = $('<div>', {
+        class: "s_grade col-md-3"
+    });
+    var delete_o = $('<button>', {
+        class: "col-md-3",
+        type: "button",
+        text: "button"
+    });
 
     $('#student_object').append(output_stud);
     $(output_stud).append(name_o, course_o, grade_o, delete_o);
 
-    for (var i = 0; i < 6; i++) {
-
-        $('.s_name').text(student_array[i]['name'])
-        $('.s_course').text(student_array[i].course)
-        $('.s_grade').text(student_array[i].grade)
-
+    for (var i = 0; i < student_array.length; i++) {
+        var student = student_array[i];
+        if (student_array.length < 1) {
+            return
+        }
+        $('').val(student_array[i].name)
+        student.grade
+        student.course
     }
-}
+};
 
 
 
