@@ -52,8 +52,8 @@ function highLowHighlight(){
 		}
 	}
 
-	row.removeClass("alert-success");
-	row.removeClass("alert-danger");
+	row.removeClass("list-group-item-success");
+	row.removeClass("list-group-item-danger");
 
 
 	if(highIndex != lowIndex){
@@ -65,10 +65,10 @@ function highLowHighlight(){
 
 		for(var i=0; i<count; i++){
 			if(highArray.length > i){
-				highArray[i].addClass("alert-success");
+				highArray[i].addClass("list-group-item-success");
 			}
 			if(lowArray.length > i){
-				lowArray[i].addClass("alert-danger");
+				lowArray[i].addClass("list-group-item-success");
 			}
 		}
 	}
