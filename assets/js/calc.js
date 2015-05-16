@@ -3,6 +3,9 @@
 
 function calcAvg(){
 	var loop = studentArray.length;
+	if(loop < 1){
+		return 0;
+	}
 	var total = 0;
 
 	for(var i=0; i<loop; i++){
@@ -52,8 +55,8 @@ function highLowHighlight(){
 		}
 	}
 
-	row.removeClass("list-group-item-success");
-	row.removeClass("list-group-item-danger");
+	row.removeClass("alert-success");
+	row.removeClass("alert-danger");
 
 
 	if(highIndex != lowIndex){
@@ -65,10 +68,10 @@ function highLowHighlight(){
 
 		for(var i=0; i<count; i++){
 			if(highArray.length > i){
-				highArray[i].addClass("list-group-item-success");
+				highArray[i].addClass("alert-success");
 			}
 			if(lowArray.length > i){
-				lowArray[i].addClass("list-group-item-success");
+				lowArray[i].addClass("alert-danger");
 			}
 		}
 	}

@@ -11,6 +11,10 @@
     width: 100%;
 }
 
+.input-error {
+	box-shadow: -1px -1px 5px red, 1px 1px 5px red;
+}
+
 .student-row {
 
     -webkit-animation-name: fadeOutBG;
