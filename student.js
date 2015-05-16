@@ -22,35 +22,27 @@ function add_student() {
 function show_student() {
     console.log('button worked')
     var output_stud = $('<div>', {
-        class: "student_info col-md-12",
+        class: "student_info list-group",
     });
     var name_o = $('<div>', {
-        class: "s_name col-md-3"
+        class: "s_name list-group-item"
     });
     var course_o = $('<div>', {
-        class: "s_course col-md-3"
+        class: "s_course list-group-item"
     });
     var grade_o = $('<div>', {
-        class: "s_grade col-md-3"
+        class: "s_grade list-group-item"
     });
     var delete_o = $('<button>', {
-        class: "col-md-3",
+        class: "list-group-item",
         type: "button",
-        text: "button"
+        text: "delete"
     });
 
     $('#student_object').append(output_stud);
     $(output_stud).append(name_o, course_o, grade_o, delete_o);
 
-    for (var i = 0; i < student_array.length; i++) {
-        var student = student_array[i];
-        if (student_array.length < 1) {
-            return
-        }
-        $('').val(student_array[i].name)
-        student.grade
-        student.course
-    }
+
 };
 
 
