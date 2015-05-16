@@ -1,8 +1,13 @@
 //Main JS File
 var studentArray = [];
 var uniqueId = 0;
+var formFields = [];
 
 $(document).ready(function(){
+
+	formFields.push($("#student_name"));
+	formFields.push($("#student_course"));
+	formFields.push($("#student_grade"));
 
 	$("#student_input").on("click", "button", function(){
 		if(addStudent()){
@@ -29,9 +34,44 @@ $(document).ready(function(){
 			i++;
 		}
 		displayAvg();
+		highLowHighlight();
 	});
 
+	updateStudentList();
+
 });
+
+function updateStudentList(){
+	var contentContainer = $('#student_info .panel-body');
+	if(studentArray.length > 0){
+		contentContainer.html('');
+		$.each(studentArray, function(){
+			contentContainer.append(this.elm);
+		});
+	}else{
+		contentContainer.append('<h5 class="col-sm-12 text-center">No Student info</h5>');
+	}
+	
+}
+
+function resetFormValues(){
+	$.each(formFields, function(){
+		this.val('');
+	})
+}
+
+function createRowElement(obj){
+	var row = $('<div>').addClass('student-row row list-group-item');
+	var nameElm = $('<div>').addClass('col-sm-4 col-xs-3').html(obj.name);
+	var courseElm = $('<div>').addClass('col-sm-3 col-xs-3').html(obj.course);
+	var gradeElm = $('<div>').addClass('col-sm-2 col-xs-3').html(obj.grade);
+	var opElm = $('<div>').addClass('col-sm-2 col-xs-2');
+	var delBtnElm = $('<button>').addClass('btn btn-danger btn-sm pull-right	').html('<span class="glyphicon glyphicon-trash" aria-hidden="true"> </span><span class="hidden-xs"> Remove</span>');
+	opElm.append(delBtnElm);
+	row.append(nameElm, courseElm, gradeElm, opElm);
+
+	return row;
+}
 
 function addStudent(){
 	var nameIn = $("#student_name");
@@ -81,14 +121,13 @@ function addStudent(){
 		student.grade = gradeValue;
 		student.id = rowId;
 		studentArray.push(student);
-		student = {};
+		//create Row Element by object
+		student.elm = createRowElement(student);
 
-		var row = $("<div class='student_container panel-body' id=" + rowId + "><div class='student-row row'><div class='col-sm-4 col-xs-3'>" + nameValue + "</div><div class='col-sm-3 col-xs-3'>" + courseValue + "</div><div class='col-sm-2 col-xs-3'>" + gradeValue + "</div><div class='col-sm-2 col-xs-2'><button class='btn btn-danger btn-sm'><span class='glyphicon glyphicon-trash' aria-hidden='true'> </span><span class='hidden-xs'>Remove</span></button></div></div></div>");
-		row.appendTo("#student_info");
+		//reset the form values
+		resetFormValues();
 
-		nameIn.val('');
-		courseIn.val('');
-		gradeIn.val('');
+		updateStudentList();
 
 		return true;
 	}
