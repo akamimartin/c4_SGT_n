@@ -17,7 +17,7 @@ $(document).ready(function(){
 	});
 
 	$("#student_info").on("click", "button", function(){
-		var rowDel = $(this).closest(".student_container");
+		var rowDel = $(this).closest(".student-row");
 		var rowId = rowDel.attr("id");
 		var loop = studentArray.length;
 		var deleted = false;
@@ -61,7 +61,7 @@ function resetFormValues(){
 }
 
 function createRowElement(obj){
-	var row = $('<div>').addClass('student-row row list-group-item');
+	var row = $('<div>').addClass('student-row row list-group-item').attr("id", obj.id);
 	var nameElm = $('<div>').addClass('col-sm-4 col-xs-3').html(obj.name);
 	var courseElm = $('<div>').addClass('col-sm-3 col-xs-3').html(obj.course);
 	var gradeElm = $('<div>').addClass('col-sm-2 col-xs-3').html(obj.grade);

@@ -22,57 +22,29 @@ function displayAvg(){
 function highLowHighlight(){
 	var row = $(".student-row");
 	var loop = studentArray.length;
-	if(loop < 1){
+	if(loop < 2){
 		return;
 	}
-	var highIndex = 0;
-	var lowIndex = 0;
-	var highGrade = studentArray[highIndex].grade;
-	var lowGrade = studentArray[lowIndex].grade;
+	var highGrade = -1;
+	var lowGrade = 101; 
 
 	for(var i=0; i<loop; i++){
-		
 		var student = studentArray[i];
-
 		if(student.grade > highGrade){
-			highIndex = i;
 			highGrade = student.grade;
 		}else if(student.grade < lowGrade){
-			lowIndex = i;
 			lowGrade = student.grade;
 		}
 	}
-
-	var highArray = [$(row[highIndex])];
-	var lowArray = [$(row[lowIndex])];
+	row.removeClass("list-group-item-success");
+	row.removeClass("list-group-item-danger");
 	
 	for(var i=0; i<loop; i++){
 		var student  = studentArray[i];
 		if(student.grade == highGrade){
-			highArray.push($(row[i]));
+			$(row[i]).addClass("list-group-item-success");
 		}else if(student.grade == lowGrade){
-			lowArray.push($(row[i]));
-		}
-	}
-
-	row.removeClass("list-group-item-success");
-	row.removeClass("list-group-item-danger");
-
-
-	if(highIndex != lowIndex){
-		if(highArray.length >= lowArray.length){
-			var count = highArray.length;
-		}else{
-			var count = lowArray.length;
-		}
-
-		for(var i=0; i<count; i++){
-			if(highArray.length > i){
-				highArray[i].addClass("list-group-item-success");
-			}
-			if(lowArray.length > i){
-				lowArray[i].addClass("list-group-item-danger");
-			}
+			$(row[i]).addClass("list-group-item-danger");
 		}
 	}
 }
