@@ -10,8 +10,21 @@ input {
 	
 }
 .highest{
-	box-shadow: 0px 0px 10px yellow
+  width: 142px;
+  height: 30px;
+  background-color: #00b3b3;
+  opacity: 0.5;
+  color: white;
+  text-align: center;
+
 }
+
 .lowest{
-	box-shadow: 0px 0px 10px red
+  width: 142px;
+  height: 30px;
+  background-color: #7a797f ;
+  opacity: 0.5;
+  color: white;
+  text-align: center;
 }
+
