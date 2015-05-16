@@ -63,16 +63,7 @@
 
         $('.student_list').empty();
         for (var i = 0; i < student_array.length; i++) {
-            if (color_count == 0) {
-                background_color = '#E5FFF6'
-                color = '#4C997F';
-                color_count++;
-            } else {
-                background_color = '#FAFAEE';
-                color = '#B2A089';
-                color_count--;
-            }
-            var student_info_container = $('<div>').addClass('student_information col-sm-12 well').css('background-color', background_color).css('color', color);
+            var student_info_container = $('<div>').addClass('student_information col-sm-12 well').css('background-color', background_color);
             var sname = $('<div>').addClass('sname col-sm-3').text(student_array[i].student_name);
             var scourse = $('<div>').addClass('scourse col-sm-3').text(student_array[i].student_course);
             var sgrade = $('<div>').addClass('sgrade col-sm-3').text(student_array[i].student_grade);
@@ -133,10 +124,8 @@
                 highest_grade_indeces.push(i);
             }
             if (student_array[i].student_grade > highest_grade) {
-                if (highest_grade_indeces.length > 1) {
-                    highest_grade_indeces = [0];
-                }
-                highest_grade_indeces[0] = i;
+
+                highest_grade_indeces = [i];
                 highest_grade = student_array[i].student_grade;
             }
             if (student_array[i].student_grade == lowest_grade) {
@@ -144,9 +133,6 @@
             }
             //lowest check
             if (student_array[i].student_grade < lowest_grade) {
-                if (lowest_grade_indeces.length > 1) {
-                    lowest_grade_indeces = [0];
-                }
                 lowest_grade_indeces[0] = i;
                 lowest_grade = student_array[i].student_grade;
             }
@@ -160,33 +146,23 @@
       * 
       *************************************/
     function highlight_grade() {
-            var lowest_style = {
-                color: 'red',
-                'font-weight': 'bold',
-                'font-size': '18px'
-            }
-            var highest_style = {
-                color: 'gold',
-                'font-weight': 'bold',
-                'font-size': '18px'
-            }
 
             for (var i = 0; i < highest_grade_indeces.length; i++) {
-                $('.sgrade').eq(highest_grade_indeces[i]).css(highest_style).addClass('glyphicon glyphicon-star');
+                $('.sgrade').eq(highest_grade_indeces[i]).addClass('highest_style glyphicon glyphicon-star');
 
             }
             for (var i = 0; i < lowest_grade_indeces.length; i++) {
-                $('.sgrade').eq(lowest_grade_indeces[i]).css(lowest_style).addClass('glyphicon glyphicon-alert');
+                $('.sgrade').eq(lowest_grade_indeces[i]).addClass('lowest_style glyphicon glyphicon-alert');
             }
         }
 
-        
+
         /********************
          * Program Execution
          ********************/
 
     $(document).ready(function() {
-        $('.add_student').on('click', add_student);
+        $('.add_student').click(add_student);
         $('.delete_student').on('click', delete_student);
 
 
@@ -205,9 +181,9 @@
         <div class="student_list col-sm-12"></div>
     </section>
     <section id="student_input" class="well col-sm-4 col-md-4">
-        <input type="text" name="student_name" id="student_name" placeholder="Student Name">
-        <input type="text" name="student_course" id="student_course" placeholder="Student Course">
-        <input type="text" name="student_grade" id="student_grade" placeholder="Student Grade (0-100)">
+        <input type="text" class="input_info"name="student_name" id="student_name" placeholder="Student Name">
+        <input type="text" class="input_info" name="student_course" id="student_course" placeholder="Student Course">
+        <input type="text" class="input_info" name="student_grade" id="student_grade" placeholder="Student Grade (0-100)">
         <button type="button" class="add_student">Add Student</button>
         <button type="button" class="delete_student">Delete Student</button>
     </section>

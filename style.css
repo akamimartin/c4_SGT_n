@@ -1,5 +1,4 @@
-
-input {
+.input_info {
     width: 100%
 }
 
@@ -8,9 +7,37 @@ input {
     color: black;
     background: rgb(245, 245, 245);
 }
+
 .delete:focus {
-	display: none;
+    display: none;
 }
+
 .alert {
-	margin-top: 5%;
+    margin-top: 5%;
+}
+
+.glyphicon {
+    font-size:
+}
+
+.student_list .well:nth-child(odd) {
+    background-color: #E5FFF6;
+    color: #4C997F;
+}
+
+.student_list .well:nth-child(even) {
+    background-color: #FAFAEE;
+    color: #B2A089;
+}
+
+.lowest_style {
+    color: red;
+     font-weight: bold;
+      font-size: 18px;
+}
+
+.highest_style {
+    color: gold;
+    font-weight: bold;
+    font-size: 18px;
 }
