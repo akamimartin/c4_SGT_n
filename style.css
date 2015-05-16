@@ -31,4 +31,10 @@
 	background-color: #c0392b;
 	border-radius: 8px;
 }
+
+#grade_average{
+	font-family: 'Oswald', sans-serif;
+	font-size: 16px;
+	text-align:center;
+}
 }
