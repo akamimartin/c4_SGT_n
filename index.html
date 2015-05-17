@@ -119,8 +119,8 @@
 
     function pt_student_highest_grade() {
         for (var i = 0; i < student_average_array[i].length; i++) {
-            if (student_average_array[i] > highest_grade) {
-                highest_grade = student_average_array[i];
+            if (student_average_array[i].student_grade > highest_grade) {
+                highest_grade = student_average_array[i].student_grade;
                 highest_index = [i];
             } else if (student_average_array[i] == highest_grade) {
                 highest_index.push[i];
@@ -133,15 +133,15 @@
 
     function pt_student_lowest_grade() {
         for (var i = 0; i < student_average_array[i].length; i++) {
-            if (student_average_array[i] < lowest_grade) {
-                lowest_grade = student_average_array[i];
+            if (student_average_array[i].student_grade < lowest_grade) {
+                lowest_grade = student_average_array[i].student_grade;
                 lowest_index = student_average_array[i];
             } else if (student_average_array[i] == lowest_grade) {
                 lowest_index.push[i];
             }
+            $('.student_result').eq(lowest_grade).addClass('highlight_lowest');
 
         }
-                        $('.student_result').eq(i).append((lowest_grade).addClass('highlight_lowest');
 
     }
     </script>
