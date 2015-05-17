@@ -1,11 +1,12 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <script type="text/javascript">
     var student_grade_sum = 0;
@@ -35,9 +36,8 @@
     function populate_student_display() {
         for (var i = 0; i < pt_student_array.length; i++) {
             var delete_button = $("<button>", {
-                text: 'Delete Student',
                 type: 'button',
-                class: 'button',
+                class: 'button glyphicon glyphicon-remove-sign',
                 id: 'delete_button',
             });
 
@@ -45,20 +45,20 @@
                 class: 'student_result row',
             });
             var name_div = $("<div>", {
-                class: 'student_result col-md-3',
+                class: 'student_result col-xs-3 col-sm-3 col-md-3 col-lg-3 page_font',
                 text: pt_student_array[i].student_name
             });
             var course_div = $("<div>", {
-                class: 'student_result col-md-3',
+                class: 'student_result col-xs-3 col-sm-3 col-md-3 col-lg-3 page_font',
                 text: pt_student_array[i].student_course
             });
             var grade_div = $("<div>", {
-                class: 'student_result col-md-3',
+                class: 'student_result col-xs-3 col-sm-3 col-md-3 col-lg-3 page_font',
                 text: pt_student_array[i].student_grade
             });
             $(".student_container").append(student_summary, name_div, course_div, grade_div, delete_button);
         };
-        
+
         clear_student_array();
     };
 
@@ -139,28 +139,30 @@
 </head>
 
 <body>
+    <h1 class="page_font page_header">Student Grade Table</h1>
     <section id="student_info">
-        <div class="student_container row-8">
-            <span class="col-md-4 student_columns">Student Name</span>
-            <span class="col-md-4 student_columns">Student Course</span>
-            <span class="col-md-4 student_columns">Student Grade</span>
+        <div class="student_container container-fluid">
+            <span class="col-xs-3 col-sm-3 col-md-3 col-lg-3 student_columns page_font">Student Name</span>
+            <span class="col-xs-3 col-sm-3 col-md-3 col-lg-3 student_columns page_font">Student Course</span>
+            <span class="col-xs-3 col-sm-3 col-md-3 col-lg-3 student_columns page_font">Student Grade</span>
+            <span class="col-xs-3 col-sm-3 col-md-3 col-lg-3 student_columns page_font">Action</span>
         </div>
     </section>
-    <div id="grade_average" class="col-sm-2 col-sm-offset-10">Average: <span></span></div>
-    <section id="student_id">
-        <form role="form" class="col-lg-8">
-            <div class="form-group student_id">Student Name
-                <input type="text" name="student_name" class="student_input" id="student_name" placeholder="Student Name">
+    <section id="student_id" class="container-fluid">
+        <form role="form" class="student_form "id="student_form_container">
+            <div class="form-group page_font">
+                <input type="text" name="student_name" class="student_input page_font form-control" id="student_name" placeholder="Student Name">
             </div>
-            <div class="form-group student_id">Student Course
-                <input type="text" name="student_course" class="student_input" id="student_course" placeholder="Student Course">
+            <div class="form-group page_font">
+                <input type="text" name="student_course" class="student_input page_font form-control" id="student_course" placeholder="Student Course">
             </div>
-            <div class="form-group student_id">Student Grade
-                <input type="text" name="student_grade" class="student_input" id="student_grade" placeholder="Student Grade (0-100)">
+            <div class="form-group page_font">
+                <input type="text" name="student_grade" class="student_input page_font form-control" id="student_grade" placeholder="Student Grade (0-100)">
             </div>
+            <button type="button" class="button glyphicon glyphicon-user" id="add_student">Add</button>
         </form>
     </section>
-    <button type="button" class="button" id="add_student">Add Student</button>
+    <div id="grade_average" class="col-sm-2-offset-10 page_font">Average Grade: <span></span></div>
 </body>
 
 </html>
