@@ -10,34 +10,47 @@ var student_object = {
 
 function add_student() {
 
-    var addstudent = Object.create(student_object);
-    addstudent.name = $('#student_name').val();
-    addstudent.course = $('#student_course').val();
-    addstudent.grade = $('#student_grade').val();
-    student_array.push(addstudent);
-
-    console.log(student_array)
-}
-
+        var addstudent = Object.create(student_object);
+        addstudent.s_name = $('#student_name').val();
+        addstudent.s_course = $('#student_course').val();
+        addstudent.s_grade = parseFloat($('#student_grade').val());
+        student_array.push(addstudent);
+        //show_student();
+        console.log(student_array)
+    }
+    //got the show_student button to work we can also put it inside the add_student button by removing the comment before the show_student() function
 function show_student() {
     console.log('button worked')
-    var output_stud = $('<div class="student_info col-md-12">');
-    var name_o = $('<div class="s_name col-md-6">');
-    var course_o = $('<div class="s_course col-md-2">');
-    var grade_o = $('<div class="s_grade col-md-2">');
-    var delete_o = $('<button type="button" class="col-md-2">delete</button>');
 
-    $('#student_object').append(output_stud);
-    $(output_stud).append(name_o, course_o, grade_o, delete_o);
 
-    for (var i = 0; i < 6; i++) {
 
-        $('.s_name').text(student_array[i]['name'])
-        $('.s_course').text(student_array[i].course)
-        $('.s_grade').text(student_array[i].grade)
+    for (var i = 0; i < student_array.length; i++) {
+        var output_stud = $('<div>', {
+            class: "student_info list-group",
+        });
+        var name_o = $('<div>', {
+            class: "st_name list-group-item",
+            text: student_array[i].s_name
+        });
+        var course_o = $('<div>', {
+            class: "st_course list-group-item",
+            text: student_array[i].s_course
+        });
+        var grade_o = $('<div>', {
+            class: "st_grade list-group-item",
+            text: student_array[i].s_grade
+        });
+        var delete_o = $('<button>', {
+            class: "list-group-item",
+            type: "button",
+            text: "delete"
+        });
+        $('#student_object').append(output_stud);
+        $(output_stud).append(name_o, course_o, grade_o, delete_o);
 
     }
-}
+
+};
 
 
 
