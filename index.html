@@ -118,28 +118,33 @@
     }
 
     function pt_student_highest_grade() {
+        highest_index = [0];
+        highest_grade = student_average_array[0].student_grade;
         for (var i = 0; i < student_average_array[i].length; i++) {
             if (student_average_array[i].student_grade > highest_grade) {
                 highest_grade = student_average_array[i].student_grade;
                 highest_index = [i];
             } else if (student_average_array[i] == highest_grade) {
-                highest_index.push[i];
+                highest_index.push(i);
             }
 
         }
-            $('.student_result').eq(highest_grade).addClass('highlight_highest');
+        $('.student_result').eq(highest_index).addClass('highlight_highest');
 
     }
 
     function pt_student_lowest_grade() {
+        lowest_index = [0];
+        lowest_grade = student_average_array[0].student_grade;
+
         for (var i = 0; i < student_average_array[i].length; i++) {
             if (student_average_array[i].student_grade < lowest_grade) {
                 lowest_grade = student_average_array[i].student_grade;
-                lowest_index = student_average_array[i];
+                lowest_index = [i];
             } else if (student_average_array[i] == lowest_grade) {
-                lowest_index.push[i];
+                lowest_index.push(i);
             }
-            $('.student_result').eq(lowest_grade).addClass('highlight_lowest');
+            $('.student_result').eq(lowest_index).addClass('highlight_lowest');
 
         }
 
