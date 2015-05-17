@@ -17,8 +17,8 @@
     var student_div_lowest = $('.student_result').addClass('highlight_lowest');
     var highest_grade = -1;
     var lowest_grade = 101;
-    var highest_index = [];
-    var lowest_index = [];
+    var highest_index = [0];
+    var lowest_index = [0];
     var pt_student_array = [];
     var student_object = {
         student_name: null,
@@ -40,7 +40,7 @@
                 text: 'Delete Student',
                 type: 'button',
                 class: 'button',
-                id: 'delete_button'+i,
+                id: 'delete_button' + i,
             });
 
             var student_summary = $("<div>", {
@@ -61,7 +61,7 @@
             });
             $(".student_container").append(student_summary, name_div, course_div, grade_div, delete_button);
         };
-        
+
         clear_student_array();
     };
 
@@ -118,29 +118,31 @@
     }
 
     function pt_student_highest_grade() {
-        for (var i = 0; i < student_average_array; i++) {
+        for (var i = 0; i < student_average_array[i].length; i++) {
             if (student_average_array[i] > highest_grade) {
                 highest_grade = student_average_array[i];
                 highest_index = [i];
             } else if (student_average_array[i] == highest_grade) {
                 highest_index.push[i];
             }
-            $('.student_result').eq(i).addClass('highlight_highest').append(highest_grade, lowest_index);
 
         }
+            $('.student_result').eq(highest_grade).addClass('highlight_highest');
+
     }
 
     function pt_student_lowest_grade() {
-        for (var i = 0; i < student_average_array[i]; i++) {
+        for (var i = 0; i < student_average_array[i].length; i++) {
             if (student_average_array[i] < lowest_grade) {
                 lowest_grade = student_average_array[i];
                 lowest_index = student_average_array[i];
             } else if (student_average_array[i] == lowest_grade) {
                 lowest_index.push[i];
             }
-                    $('.student_result').eq(i).addClass('highlight_lowest').append(lowest_grade, lowest_index);
 
         }
+                        $('.student_result').eq(i).append((lowest_grade).addClass('highlight_lowest');
+
     }
     </script>
 </head>
