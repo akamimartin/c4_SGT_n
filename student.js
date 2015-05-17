@@ -52,11 +52,11 @@ function average_grade()
     var sum = 0;
     var average = 0;
 
-        for (i = 0; i < student_array.length; i++) 
-        {
-            sum += parseFloat(student_array[i].grade);
-        
-        }   
+    for (i = 0; i < student_array.length; i++) 
+    {
+        sum += parseFloat(student_array[i].grade);
+    
+    }   
     average = parseFloat(sum) / student_array.length;
     console.log('Average: ',average);
 }
@@ -64,25 +64,31 @@ function average_grade()
 function high_grade() 
 {
     var max = 0;
-        for (i = 0; i < student_array.length; i++) 
+    for (i = 0; i < student_array.length-1; i++) 
+    {
+        console.log('checking student_array['+i+'] > student_array['+(i+1)+']');
+
+        console.log(student_array[i].grade + '>' + student_array[i+1].grade)
+        if (student_array[i].grade > student_array[i+1].grade)
         {
-            if (student_array[i].grade > student_array[i+1].grade)
-            {
-                 max = student_array[i].grade;
-                 console.log('Max:', max);
-            }
+             max = student_array[i].grade;
+             console.log('Max:', max);
         }
+    }
 }
 
 function low_grade()
 {
-   var min = 0;
-        for (i = 0; i < student_array.length; i++) 
+    var min = 0;
+    for (i = 0; i < student_array.length-1; i++) 
+    {
+        console.log('checking student_array['+i+'] < student_array['+(i+1)+']');
+
+        console.log(student_array[i].grade + '<' + student_array[i+1].grade)
+        if (student_array[i].grade < student_array[i+1].grade)
         {
-            if (student_array[i].grade < student_array[i+1].grade)
-            {
-                 min = student_array[i].grade;
-                 console.log('Min:', min);
-            }
+            min = student_array[i].grade;
+            console.log('Min:', min);
         }
+    }
 }
