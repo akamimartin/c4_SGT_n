@@ -13,6 +13,8 @@
     var student_average_array = [];
     var index = 0;
     var student_grade_as_float = 0;
+    var student_div_highest = $('.student_result').addClass('highlight_highest');
+    var student_div_lowest = $('.student_result').addClass('highlight_lowest');
     var highest_grade = -1;
     var lowest_grade = 101;
     var highest_index = [];
@@ -38,11 +40,12 @@
                 text: 'Delete Student',
                 type: 'button',
                 class: 'button',
-                id: 'delete_button',
+                id: 'delete_button'+i,
             });
 
             var student_summary = $("<div>", {
                 class: 'student_result row',
+                id: student_id[i]
             });
             var name_div = $("<div>", {
                 class: 'student_result col-md-3',
@@ -122,6 +125,8 @@
             } else if (student_average_array[i] == highest_grade) {
                 highest_index.push[i];
             }
+            $('.student_result').eq(i).addClass('highlight_highest').append(highest_grade, lowest_index);
+
         }
     }
 
@@ -133,6 +138,8 @@
             } else if (student_average_array[i] == lowest_grade) {
                 lowest_index.push[i];
             }
+                    $('.student_result').eq(i).addClass('highlight_lowest').append(lowest_grade, lowest_index);
+
         }
     }
     </script>

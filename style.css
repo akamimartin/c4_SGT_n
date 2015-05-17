@@ -37,4 +37,13 @@
 	font-size: 16px;
 	text-align:center;
 }
+
+.highlight_highest {
+	background: teal;
+	font-color: white;
+}
+
+.highlight_lowest {
+	background: red;
+	font-color: white;
 }
