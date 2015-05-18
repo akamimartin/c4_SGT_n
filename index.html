@@ -52,11 +52,30 @@
             //$(".student_container").append(containerinfo);
         
         function add_studentinfo() {
+        
+        if (($("#student_grade").val() > 100) || ($("#student_grade").val() < 0)){
+           alert('Enter a number between 0 and 100.');
+              return;
+            }
+        if ($.isNumeric($("#student_grade").val()) == false){ 
+              alert('Enter a number between 0 and 100.');
+              return;
+              }
+        if ($("#student_course").val() == '' || $("#student_grade").val() == ''){
+          alert('Enter a valid student name and course.');
+              return;
+            
+        }
+                        
         var new_student = {
+
             names: $("#student_name").val(),
             course: $("#student_course").val(),
-            grade: $("#student_grade").val()
-        }
+            
+            grade: $("#student_grade").val(),
+             
+            }
+        
 
         student_array.push(new_student);  
 
