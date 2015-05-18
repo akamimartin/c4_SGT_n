@@ -39,7 +39,7 @@
         if(parseFloat($('#student_grade').val()) >= 101 || parseFloat($('#student_grade').val()) <= -1)
         {
           $('.alert').remove();
-          var invalidNumAlert = $('<div>').addClass('alert alert-danger col-sm-12 col-md-12').text('Please enter a valid number.');
+          var invalidNumAlert = $('<div>').addClass('alert alert-danger col-sm-12 col-md-12').text('Please enter a number between 1-100.');
           $('#student_input').append(invalidNumAlert);
           return;
         }
@@ -47,7 +47,18 @@
         var addstudent = Object.create(student_object);
         addstudent.student_name = $('#student_name').val();
         addstudent.student_course = $('#student_course').val();
-        addstudent.student_grade = parseFloat($('#student_grade').val());
+        var isNum = /^\d+$/.test($('#student_grade').val());
+        console.log(isNum);
+        if(isNum)
+        {
+          addstudent.student_grade = parseFloat($('#student_grade').val());
+        }
+        else
+        {
+          var nan_Alert = $('<div>').addClass('alert alert-danger col-sm-12 col-md-12').text('Please enter a number for student grade.');
+          $('#student_input').append(nan_Alert);
+          return;
+        }        
         student_array.push(addstudent);
         $('input').val('');
         list_students();
