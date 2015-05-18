@@ -16,11 +16,17 @@ function add_student() {
         addstudent.s_grade = parseFloat($('#student_grade').val());
         student_array.push(addstudent);
         //show_student();
-        console.log(student_array)
+        console.log(student_object);
+        console.log(student_array);
+        average_grade();
+        //v--------KC Added the Average function to this button
+        
+
     }
     //got the show_student button to work we can also put it inside the add_student button by removing the comment before the show_student() function
 function show_student() {
-    console.log('button worked')
+    console.log('button worked');
+    console.log(student_object);
 
 
 
@@ -60,16 +66,50 @@ $(document).ready(function() {
 
 });
 
-function average_grade() {
+function average_grade() 
+{
     var sum = 0;
     var average = 0;
+    console.log(student_object);
+    console.log(student_array);
+    for (var i = 0; i < student_array.length; i++) 
+        {
+            sum += student_array[i].s_grade;
 
-    for (i = 0; i < student_array.length; i++) {
-        sum += student_array[i];
-        average = sum / student_object.grade;
+        }   
+    average = sum / student_array.length;
+    console.log('Average: ',average);
+    $('#student_display').val(average.toFixed(0));
+}
+
+function high_grade() 
+{
+    var max = 0;
+    for (var i = 0; i < student_array.length-1; i++) 
+    {
+        console.log('checking student_array['+i+'] > student_array['+(i+1)+']');
+
+        console.log(student_array[i].s_grade + '>' + student_array[i+1].s_grade)
+        if (student_array[i].s_grade > student_array[i+1].s_grade)
+        {
+             max = student_array[i].s_grade;
+             console.log('Max:', max);
+        }
     }
 }
 
-function highlow_grade() {
+function low_grade()
+{
+    var min = 0;
+    for (var i = 0; i < student_array.length-1; i++) 
+    {
+        console.log('checking student_array['+i+'] < student_array['+(i+1)+']');
 
+        console.log(student_array[i].s_grade + '<' + student_array[i+1].s_grade)
+        if (student_array[i].s_grade < student_array[i+1].s_grade)
+        {
+            min = student_array[i].s_grade;
+            console.log('Min:', min);
+        }
+    }
 }
