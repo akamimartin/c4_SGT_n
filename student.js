@@ -25,8 +25,10 @@ function add_student() {
     }
     //got the show_student button to work we can also put it inside the add_student button by removing the comment before the show_student() function
 function show_student() {
-    console.log('button worked');
-    console.log(student_object);
+
+    console.log('button worked')
+    
+
 
 
 
