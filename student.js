@@ -21,6 +21,7 @@ function add_student() {
     //got the show_student button to work we can also put it inside the add_student button by removing the comment before the show_student() function
 function show_student() {
     console.log('button worked')
+    average_grade();
 
 
 
@@ -60,16 +61,3 @@ $(document).ready(function() {
 
 });
 
-function average_grade() {
-    var sum = 0;
-    var average = 0;
-
-    for (i = 0; i < student_array.length; i++) {
-        sum += student_array[i];
-        average = sum / student_object.grade;
-    }
-}
-
-function highlow_grade() {
-
-}
