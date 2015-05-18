@@ -1,42 +1,61 @@
+/** {
+	border: 1px solid black;
+}*/
 
+.page_font {
+    font-family: 'Oswald', sans-serif;
+}
+
+.page_header {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    margin-top: 0px;
+}
 
 .student_columns {
-	font-family: 'Oswald', sans-serif;
-	border: 1px solid black;
-	font-size: 22px;
-	text-align: center;
-	color: white;
-	background-color: #34495e;
+    border: 1px solid black;
+    font-size: 22px;
+    text-align: center;
+    color: white;
+    background-color: #34495e;
 }
+
 .student_result {
-	font-family: 'Oswald', sans-serif;
-	font-size: 16px;
-	text-align:center;
-}
-#add_student{
-	font-family: 'Oswald', sans-serif;
-	color: white;
-	background-color: #2ecc71;
-	border-radius: 8px;
-}
-.student_input{
-	font-family: 'Oswald', sans-serif;
-	font-size: 16px;
-	text-align:center;
+    font-size: 16px;
+    text-align: center;
 }
 
-#delete_button{
-	font-family: 'Oswald', sans-serif;
-	color: white;
-	background-color: #c0392b;
-	border-radius: 8px;
+#add_student {
+    color: white;
+    background-color: #2ecc71;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
-#grade_average{
-	font-family: 'Oswald', sans-serif;
-	font-size: 16px;
-	text-align:center;
+.student_input {
+    font-size: 16px;
+    text-align: center;
 }
+
+#delete_button {
+    color: white;
+    background-color: #c0392b;
+    border-radius: 8px;
+    left: 20%;
+}
+
+#grade_average {
+    font-size: 16px;
+    text-align: center;
+}
+
+.student_form {}
+
+#student_id {
+    margin-top: 15px;
+}
+<<<<<<< HEAD
 
 .highlight_highest {
 	background: teal;
@@ -47,3 +66,5 @@
 	background: red;
 	font-color: white;
 }
+=======
+>>>>>>> c48a2cedfb85a94ebd2bbb1318d989a1140ec134
