@@ -13,27 +13,22 @@
         <div class="student_container">
             <span class="col-sm-2">Student Name</span>
             <span class="col-sm-2">Student Course</span>
-            <span class="col-sm-3">Student Grade</span>
-            <span class="col-sm-3">Operations</span>
-            <div id="student_info" class="col-sm-2">Student Info <span></span></div>
+            <span class="col-sm-2">Student Grade</span>
+            <span class="col-sm-4">Operations</span>
+        <div id="grade_average" class="col-sm-2 col-md-2">Average <span></span></div>
         </div>
-    </section>
-    <div id="grade_average"><span></span></div>
-    <section id="student_info">
+    </section>  
+    <section id="student_input">
         <input type="text" name="student_name" id="student_name" class="col-md-2" placeholder="Student Name">
         <input type="text" name="student_course" id="student_course" class="col-md-2" placeholder="Student Course ">
         <input type="text" name="student_grade" id="student_grade" class="col-md-2" placeholder="Student Grade (0-100)">
-        <button type="button" class="s_add col-md-1">Add Student</button>
-        <!--======================KC Function Test Buttons=======================-->
-        <button type="button" onclick="average_grade()">Average Grade</button>
-        <button type="button" onclick="high_grade()">High</button>
-        <button type="button" onclick="low_grade()">Low</button>
-        <input id="student_object" readonly class="col-md-4">
-        <!--======================KC Function Test Buttons=======================-->
-        </div>
         <button type="button" class="s_show col-md-1" onclick="show_student()">Show Student</button>
         <div id="student_object" class="col-md-12"></div>
-    </section>
+        <button type="button" class="s_add col-md-2">Add Student</button>
+        <button type="button" class="s_show col-md-2 col-sm-2" onclick="show_student()">Show Student</button>
+        <input id="student_display" readonly></input>
+        <div id='student_object' class="col-md-8"></div>
+     </section>
 </body>
 
 </html>
