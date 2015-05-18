@@ -11,17 +11,21 @@ function highest_lowest_grade(){
 	for (var i = 0; i < student_array.length; i++){
 		var grade = parseFloat(student_array[i].grade);
 		
-		if (grade == highest_grade){
-			highest_array.push(i);
-		}
-		else if (grade > highest_grade) {
+		if (grade > highest_grade) {
 			highest_array = [i];
 			highest_grade = grade;
 		}
+
 		else if (grade < lowest_grade){
 			lowest_array = [i];
 			lowest_grade = grade;
 		}
+		
+		else if (grade == highest_grade){
+			highest_array.push(i);
+		}
+		
+		
 		else if(grade == lowest_grade){
 			lowest_array.push(i);
 		}
