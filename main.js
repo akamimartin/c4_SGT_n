@@ -81,56 +81,77 @@ function add_studentinfo() {
   student_array.push(student);
   console.log('student_array' + student);
 }
+//changes the input box to blue then back to norm. ~jk
+$(':text').focus(function()
+{
+  $(this).css({
+  backgroundColor: '#008C9E',
+  opacity: '0.7',
+  color: 'white',
+});
+});
+
+$(':text').blur(function()
+{
+  $(this).css({
+  backgroundColor: '#333333',
+  opacity: '0.7',
+  color: '#00DFFC',
+});
+});
 
 
-function display_style() {
+
+// function display_style() {
 	//changes input 
 
-	$('.form-control').css({
-		backgroundColor: 'white',
-		height: '50px',
-		fontSize: '20px',
-	});
+	// $('.form-control').css({
+	// 	#backgroundColor: 'white',
+	// 	height: '50px',
+	// 	fontSize: '20px',
+	// });
 	//changes student name, student course, and student grade
-	$('.student_container').css({
-		fontSize: '20px',
-		fontWeight: 'bold',
-		color: '#3f3f3f',
-	});
+	// $('.student_container').css({
+	// 	fontSize: '20px',
+	// 	fontWeight: 'bold',
+	// 	color: '#3f3f3f',
 
-	$('#grade_average').css({
-		fontSize: '20px',
-		position: 'relative',
-		top: '-30px',
-		left: '-860px',
-		fontWeight: 'bold',
-		color: '#3f3f3f',
-	});
+	// });
 
-	$('#button').css({
-		position: 'relative',
-		left: '80%',
-		top: '10px',
-		height: '45px',
-	});
+	// $('#grade_average').css({
+	// 	fontSize: '20px',
+	// 	position: 'relative',
+	// 	top: '-30px',
+	// 	left: '-860px',
+	// 	fontWeight: 'bold',
+	// 	color: '#3f3f3f',
+	// });
 
-	$('#button1').css({
-		position: 'relative',
-		left: '80%',
-		top: '10px',
-		height: '45px',
-	});
+	// $('#button').css({
+	// 	position: 'relative',
+	// 	left: '80%',
+	// 	top: '10px',
+	// 	height: '45px',
+	// });
 
-	$('#operations').css({
-		position: 'absolute',
-		fontSize: '20px',
-		color: '#3f3f3f',
-		textDecoration: 'underline',
-	})
-}
+	// $('#button1').css({
+	// 	position: 'relative',
+	// 	left: '80%',
+	// 	top: '10px',
+	// 	height: '45px',
+	// });
+
+	// $('#operations').css({
+	// 	position: 'absolute',
+	// 	fontSize: '20px',
+	// 	color: '#3f3f3f',
+	// 	textDecoration: 'underline',
+	// })
+// }
 
 $(document).ready(function(){
-	display_style();
+
+	// display_style();
 	$('#button').click(function(){
 	add_studentinfo();
 	average_grade();
