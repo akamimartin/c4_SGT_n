@@ -79,7 +79,7 @@ function average_grade()
         }   
     average = sum / student_array.length;
     console.log('Average: ',average);
-    $('#student_display').append(average);
+    $('#student_display').val(average.toFixed(0));
 }
 
 function high_grade() 
