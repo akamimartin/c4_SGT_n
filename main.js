@@ -29,13 +29,21 @@ function highest_lowest_grade(){
 }
 function highlight(){
 	for (var i = 0; i < student_array.length; i++){
+		student_array[i].name_element.removeClass('highest');
+		student_array[i].course_element.removeClass('highest');
 		student_array[i].grade_element.removeClass('highest');
+		student_array[i].name_element.removeClass('lowest');
+		student_array[i].course_element.removeClass('lowest');
 		student_array[i].grade_element.removeClass('lowest');
 	}
 	for (var i = 0; i < highest_array.length; i++){
+		student_array[highest_array[i]].name_element.addClass('highest');
+		student_array[highest_array[i]].course_element.addClass('highest');
 		student_array[highest_array[i]].grade_element.addClass('highest');
 	}
 	for (var i = 0; i < lowest_array.length; i++){
+		student_array[lowest_array[i]].name_element.addClass('lowest');
+		student_array[lowest_array[i]].course_element.addClass('lowest');
 		student_array[lowest_array[i]].grade_element.addClass('lowest');
 	}
 }
@@ -75,7 +83,10 @@ function add_studentinfo() {
     names: $("#student_name").val(),
     course: $("#student_course").val(),
     grade: $("#student_grade").val(),
+    name_element: name_div,
+    course_element: course_div,
     grade_element: grade_div
+
   }
 
   student_array.push(student);
@@ -152,7 +163,7 @@ $(':text').blur(function()
 $(document).ready(function(){
 
 	// display_style();
-	$('#button').click(function(){
+	$('#button1').click(function(){
 	add_studentinfo();
 	average_grade();
 	display_average();

@@ -15,7 +15,16 @@ h1 {
   left: 2%;
   color: #008C9E;
 }
+#name, #course, #grade{
+  padding: 0;
+}
+#grade{
+  text-align: center;
+}
 
+.inputed_name, .inputed_course, .inputed_grade{
+  border-bottom: 3px solid black;
+}
 /*format for student name/course/grade/operation*/
 .col-xs-3 {
   width: 18%;
@@ -39,21 +48,17 @@ h1 {
 }
 
 .highest{
-  width: 142px;
   height: 30px;
   background-color: #00b3b3;
   opacity: 0.5;
   color: white;
-  text-align: center;
 }
 
 .lowest{
-  width: 142px;
   height: 30px;
   background-color: #7a797f ;
   opacity: 0.5;
   color: white;
-  text-align: center;
 }
 
 #tab {
