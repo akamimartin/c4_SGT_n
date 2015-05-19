@@ -6,7 +6,8 @@ var student_object = {
     grade: null
 };
 
-
+var low_array = [];
+var high_array = [];
 
 function add_student() {
 
@@ -84,34 +85,47 @@ function average_grade()
     $('#student_display').val(average.toFixed(0));
 }
 
-function high_grade() 
-{
+function high_low_grade() 
+{   
+   
+    var high_grade = student_array[0].s_grade;
+    var low_grade = student_array[0].s_grade;
+    var min = 0;
     var max = 0;
-    for (var i = 0; i < student_array.length-1; i++) 
+    for (var i = 0; i < student_array.length; i++) 
     {
-        console.log('checking student_array['+i+'] > student_array['+(i+1)+']');
-
-        console.log(student_array[i].s_grade + '>' + student_array[i+1].s_grade)
-        if (student_array[i].s_grade > student_array[i+1].s_grade)
+        if (student_array[i].s_grade == high_grade)
         {
-             max = student_array[i].s_grade;
-             console.log('Max:', max);
+             high_array.push(i);
+        }
+        if (student_array[i].s_grade > high_grade)
+        {
+            high_array = [i];
+            high_grade = student_array[i].s_grade;
+        }
+        if (student_array[i].s_grade == low_grade)
+        {
+             low_array.push(i);
+        }
+        if (student_array[i].s_grade < low_grade)
+        {
+            low_array = [i];
+            low_grade = student_array[i].s_grade;
         }
     }
 }
-
-function low_grade()
-{
-    var min = 0;
-    for (var i = 0; i < student_array.length-1; i++) 
-    {
-        console.log('checking student_array['+i+'] < student_array['+(i+1)+']');
-
-        console.log(student_array[i].s_grade + '<' + student_array[i+1].s_grade)
-        if (student_array[i].s_grade < student_array[i+1].s_grade)
-        {
-            min = student_array[i].s_grade;
-            console.log('Min:', min);
-        }
+function highlight_low (){
+    
+    for (var i = 0; i < low_array.length; i++){
+        $('.st_grade').eq(low_array[i]).addClass('low')
+        console.log('low')
+    }
+}
+function highlight_high (){
+    for (var i = 0; i < high_array.length; i++) {
+    $('.st_grade').eq(high_array[i]).addClass('high')
+    console.log('high')
+    $('.footer').append('<p class="col-sm-3 col-md-3">Pink = Highest Grade in the class.</p>')
+         .append('<p class="col-sm-3 col-md-3">Blue = Lowest Grade in the class.</p>')
     }
 }
