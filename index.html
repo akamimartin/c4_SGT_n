@@ -70,42 +70,52 @@
             //$(".student_container").append(containerinfo);
         }
    /*  $(document).ready(function(){  */
-    function send_studentinfo(){
-	
-		console.log('click initiated');
-       
-			$.ajax({
-	  		url:'http://s-apis.learningfuze.com/sgt/create',
-	  		dataType:'html',
-	  		//data: {name: $('.name').val(),  grade: $('.grade').val() , course:$('.course').val() },
-            data: {name: 'Adam',  grade: 98, course:'English' },
+function send_studentinfo(){
 
-	  		method: 'POST',
-	  		cache: false,
-	  		crossDomain: true, 
-	  		success: function(response){
-	  			console.log('success result - respons==', response);
-                $('.name').text(response);
-                $('.grade').text(response);
-                $('.course').text(response);
+	console.log('click initiated');
+   
+	$.ajax({
+  		url:'http://s-apis.learningfuze.com/sgt/create',
+  		dataType:'html',
+  		//data: {name: $('.name').val(),  grade: $('.grade').val() , course:$('.course').val() },
+        data: {name: 'Adam',  grade: 98, course:'English' },
+
+  		method: 'POST',
+  		cache: false,
+  		crossDomain: true, 
+  		success: function(response){
+  			console.log('success result - respons==', response);
+            $('.name').text(response);
+            $('.grade').text(response);
+            $('.course').text(response);
 
 
-	  			//message.html('');
-	  			// if(response.success) {
-	  			 	$('#data_display').html(response);
-          		}		
-	           	 		
-	  	});
-	 };
+  			//message.html('');
+  			// if(response.success) {
+  			 	$('#data_display').html(response);
+      	}		
+           	 		
+  	});
+ }   
  
-  	/*console.log('load ended');  */
-        
-        
-        
-        
-        
-        
-        
+
+function get_student_data() {
+    $.ajax({
+        dataType: 'json',
+        url: 'http://s-apis.learningfuze.com/sgt/get',
+        success: function(response) {
+            window.response = response;
+            console.log('loaded', response);
+            student_array = student_array.concat(response.data);
+            for (var i = 0; i < student_array.length; i++) {
+                student_array[i].grade = parseFloat(student_array[i].grade)
+            }
+            list_students();
+        }
+    });
+}
+ 
+  	/*console.log('load ended');   */
         
         
         
@@ -127,7 +137,8 @@
         <input type="text" name="student_course" id="student_course" placeholder="Student Course">
         <input type="text" name="student_grade" id="student_grade" placeholder="Student Grade (0-100)">
         <button type="button" onclick="add_studentinfo()">Add Student</button>
-          <button type="button2" onclick="send_studentinfo()">Send Student</button>
+        <button type="button2" onclick="send_studentinfo()">Send Student</button>
+        <button type="button3" onclick="get_student_data">Get Student</button>
         <!--<button type="button">Delete Student</button> -->
     </section>
      <div id='data_display'>
