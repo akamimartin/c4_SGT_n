@@ -1,0 +1,65 @@
+
+
+    .student_container {
+        margin-top: 20px;
+        color: darkblue;
+        font-size: 18px;
+        font-weight: bolder;
+       
+
+        }
+
+     input {
+        background-color: #F0F0F0;
+        border: 1px solid darkblue;
+        height: 50px;
+        width: 30px;
+    } 
+    
+   
+  .button_id {
+        height: 30px;
+        width: 100px;
+        background-color: red;
+        color:white;
+        border-radius: 5px;
+        margin-left: 10px;
+
+     }
+
+   .student_data {
+      height: 60px;
+      vertical-align: center;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: 3%;
+     
+   
+   }
+
+    .delete_student  {
+    
+    width: 80px;
+   }
+
+
+   #heading1 {
+      color: darkblue;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom:  20px;
+      margin-top: 10px;
+      text-align: center;;
+   }
+    .add_send_btn {
+        margin-top: -2px;
+        height: 52px;
+        width: 150px;
+        background-color: green;
+        color:white;
+        border-radius: 5px;
+        margin-left: 10px;
+
+     } 
