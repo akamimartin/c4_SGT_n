@@ -9,11 +9,17 @@
     #buttonid {
         
     }
-    
+#student_info :nth-child(even){
+  background-color: #dcdcdc;
+}
+#student_info:nth-child(odd){
+  background-color: #aaaaaa;
+}
     
     
     </style>
     <script>
+
         sum_of_grades = null;
         grades_array = [];
         highest_lowest = [];
@@ -32,11 +38,15 @@
          //$('#grade_average > span').append(average_of_grades);
 
 
-        function add_studentinfo() {
+        //function add_studentinfo() {
+            $('.student_data').html("");
+
             var new_student = {
-                name: $("#student_name").val(),
+                idval: $("#student_idval").val(),
+                names: $("#student_name").val(),
                 course: $("#student_course").val(),
-                grade: $("#student_grade").val()
+                grade: $("#student_grade").val(),
+              
             }
 
             student_array.push(new_student);
@@ -45,100 +55,203 @@
                 /*  $('<div>',{
                 class: "student_container0",
               }); */
+                if(isNaN(student_array[i].idval)) {
+                     student_array[i].idval  = '0';
+
+                };
+
+                console.log("aaaaa check id",  student_array[i].idval   );
                 var newdiv = $('<div class="student_data" "col-sm-12">');
-                var name_output = $('<span class="col-sm-6">').text(student_array[i].name);
-                var course_output = $('<span class="col-sm-4">').text(student_array[i].course);
-                var grade_output = $('<span class="col-sm-1">').text(student_array[i].grade);
-                var delete_output = $('<button class="col-sm-1" id="buttonid">').text("Delete");
+                var idval_output = $('<span class="col-sm-1">').text(student_array[i].idval);
+                var name_output = $('<span class="col-sm-3">').text(student_array[i].names);
+                var course_output = $('<span class="col-sm-2">').text(student_array[i].course);
+                var grade_output = $('<span class="col-sm-2">').text(student_array[i].grade);
+                var delete_output = $('<button class="col-sm-2 col-sm-offset-2" id="buttonid">').text("Delete");
+
                 //if (i==0){
                 //refresh();
                 // };
-                newdiv.append(name_output, course_output, grade_output,delete_output);
+                newdiv.append(idval_output, name_output, course_output, grade_output, delete_output);
                 $('#student_info').append(newdiv);
-                console.log("student_array=" + student_array[i]);
-                console.log("student array at " + i + " = ", student_array[i]);
+                console.log("student_array=" , student_array[i]);
+                console.log("student array at " , i , " = ", student_array[i]);
 
             }
 
         }
 
         function list_students() {
+             console.log("inside list_students");
+           /* $('#student_info').remove($('.student_data'));
+             for (var i = 0; i < student_array.length; i++) {
+                /*  $('<div>',{
+                class: "student_container0",
+              }); */
+             
+            }
 
-            $('#student_info').remove($('.student_data'));
 
-            //containerinfo.append(name_output,course_output, grade_output);
-            //$(".student_container").append(containerinfo);
-        }
+
+          //  containerinfo.append(name_output,course_output, grade_output);
+          //  $(".student_container").append(containerinfo);
+         
    /*  $(document).ready(function(){  */
-function send_studentinfo(){
+function add_send_studentinfo(){
 
+  $('.student_data').html("");
+
+            var new_student = {
+                idval: $("#student_idval").val(),
+                names: $("#student_name").val(),
+                course: $("#student_course").val(),
+                grade: $("#student_grade").val(),
+              
+            }
+
+            student_array.push(new_student);
+
+            for (var i = 0; i < student_array.length; i++) {
+                /*  $('<div>',{
+                class: "student_container0",
+              }); */
+                if(isNaN(student_array[i].idval)) {
+                     student_array[i].idval  = '0';
+
+                };
+
+                console.log("aaaaa check id",  student_array[i].idval   );
+                var newdiv = $('<div class="student_data" "col-sm-12">');
+                var idval_output = $('<span class="col-sm-1">').text(student_array[i].idval);
+                var name_output = $('<span class="col-sm-3">').text(student_array[i].names);
+                var course_output = $('<span class="col-sm-2">').text(student_array[i].course);
+                var grade_output = $('<span class="col-sm-2">').text(student_array[i].grade);
+                var delete_output = $('<button class="col-sm-2 col-sm-offset-2" id="buttonid">').text("Delete");
+
+                //if (i==0){
+                //refresh();
+                // };
+                newdiv.append(idval_output, name_output, course_output, grade_output, delete_output);
+                $('#student_info').append(newdiv);
+                console.log("student_array=" , student_array[i]);
+                console.log("student array at " , i , " = ", student_array[i]);
+
+  /* **********************************************/
 	console.log('click initiated');
    
 	$.ajax({
   		url:'http://s-apis.learningfuze.com/sgt/create',
   		dataType:'html',
-  		//data: {name: $('.name').val(),  grade: $('.grade').val() , course:$('.course').val() },
-        data: {name: 'Adam',  grade: 98, course:'English' },
+  		data: {name: $('.name').val(),  grade: $('.grade').val() , course:$('.course').val() },
+        //data: {name: 'Adam',  grade: 98, course:'English' },
 
   		method: 'POST',
   		cache: false,
   		crossDomain: true, 
   		success: function(response){
-  			console.log('success result - respons==', response);
+  			console.log('success  inside post result - respons==', response);
+            get_student_data()
             $('.name').text(response);
             $('.grade').text(response);
             $('.course').text(response);
-
-
   			//message.html('');
   			// if(response.success) {
-  			 	$('#data_display').html(response);
+  			$('#data_display').html(response);
       	}		
            	 		
   	});
  }   
  
+   }
 
+        }
 function get_student_data() {
+    console.log ("inside get_student_data")
+    console.log('student.array', student_array);
     $.ajax({
         dataType: 'json',
         url: 'http://s-apis.learningfuze.com/sgt/get',
         success: function(response) {
             window.response = response;
+            send_studentinfo()                                                                                                                                                                                                                                                              
             console.log('loaded', response);
             student_array = student_array.concat(response.data);
             for (var i = 0; i < student_array.length; i++) {
+                console.log('student:', student_array[i]);
+                console.log('student id:', student_array[i].id);
+                console.log('student name:', student_array[i].names);
+                console.log('student course:', student_array[i].course);
+                console.log('student grade:', student_array[i].grade);
+
                 student_array[i].grade = parseFloat(student_array[i].grade)
+
+                var newdiv = $('<div class="student_data" "col-sm-12">');
+                var idval_output = $('<span class="col-sm-1">').text(student_array[i].idval);
+                console.log("xxxxstudent id=",student_array[i].idval );
+                var name_output = $('<span class="col-sm-3">').text(student_array[i].names);
+                console.log("xxxxstudent name=",student_array[i].names );
+                var course_output = $('<span class="col-sm-2">').text(student_array[i].course);
+                var grade_output = $('<span class="col-sm-2">').text(student_array[i].grade);
+                var delete_output = $('<button class="col-sm-2 col-sm-offset-2" id="buttonid">').text("Delete");
+
+                //if (i==0){
+                //refresh();
+                // };
+                newdiv.append(idval_output, name_output, course_output, grade_output,delete_output);
+                $('#student_info').append(newdiv);
+            
+
             }
-            list_students();
+            /*list_students(); */
+
         }
     });
 }
  
   	/*console.log('load ended');   */
         
-        
+        function list_students() {
+             console.log("inside list_students");
+           /* $('#student_info').remove($('.student_data'));
+             for (var i = 0; i < student_array.length; i++) {
+                /*  $('<div>',{
+                class: "student_container0",
+              }); */
+             
+            }
+
+
+
+          //  containerinfo.append(name_output,course_output, grade_output);
+          //  $(".student_container").append(containerinfo);
+         
+   /*  $(document).ready(function(){  */
+      
         
     </script>
 </head>
 
 <body>
+
     <section id="student_info">
         <div class="student_container">
-            <span class="col-sm-6">Student Name</span>
-            <span class="col-sm-4">Student Course</span>
+            <span class="col-sm-1">Student Id</span>
+            <span class="col-sm-3">Student Name</span>
+            <span class="col-sm-2">Student Course</span>
             <span class="col-sm-2">Student Grade</span>
+            <span class="col-sm-2 col-sm-offset-2">Delete Student</span>
+
         </div>
     </section>
     <div id="grade_average" class="col-sm-2 col-sm-offset-10">Average: <span></span>
     </div>
     <section id="student_input">
+        <input type="text" name="student_idval" id="student_idval" placeholder="Id Value">
         <input type="text" name="student_name" id="student_name" placeholder="Student Name">
         <input type="text" name="student_course" id="student_course" placeholder="Student Course">
         <input type="text" name="student_grade" id="student_grade" placeholder="Student Grade (0-100)">
-        <button type="button" onclick="add_studentinfo()">Add Student</button>
-        <button type="button2" onclick="send_studentinfo()">Send Student</button>
-        <button type="button3" onclick="get_student_data">Get Student</button>
+        <button type="button" onclick="add_send_studentinfo()">Add-Send Student</button>
+        <button type="button" onclick="send_studentinfo()">Send Student</button>
+       <!--<button type="button" onclick="get_student_data()">Get Student</button> -->
         <!--<button type="button">Delete Student</button> -->
     </section>
      <div id='data_display'>
