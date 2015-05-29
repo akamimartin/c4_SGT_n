@@ -234,17 +234,17 @@ function auto_course_data() {
 
                   console.log('right before click')
                   //$('#course-list').click(function() {
-                    $('.course_div').click(function() {
-                        var test2 = "";
-                        $(test2).val(this).html;
-
-
-                        console.log("dddd", test2);
-                        course_list();
-                      
-                        console.log("ccc after course_list");
-         
-                    });
+                    $('.course_out').click(function() {
+                        var list_value  = $(this).html();
+                        if(list_value > '') {
+                            console.log("aaaaaa inside if",list_value);
+                            $("#student_course").val( list_value);
+                            $('.course_div').html('');
+                         }
+ 
+                        console.log("aaaaaaafter",list_value);
+                   
+                        });
                          
         }
     });
@@ -255,7 +255,6 @@ $(document).ready(function(){
     console.log('document is ready')
 
     $("#student_course").keyup(function(){
-        console.log('keyup pressed')
         auto_course_data();
           
     });
@@ -264,18 +263,12 @@ $(document).ready(function(){
 
 
  function course_list() {
-       console.log("inside course_list");
-      var test1 = $("#student_course").val($(this).text());
-      console.log('zzztest1' , test1);
-   $("#student_course").html($(this).html());
-
-
-      //  $("#student_course").val("test");
-
-       console.log('zzz after set student courese');
- 
-
-        $('#course-list').html("");
+      //  console.log("inside course_list");
+      // var test1 = $("#student_course").val($(this).html());
+      // console.log('zzztest1' , test1);
+       var list_value  = $(this).text();
+   $("#student_course").text( list_value);
+  
 
 
  }
