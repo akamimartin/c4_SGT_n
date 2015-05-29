@@ -16,33 +16,43 @@
     </div>
     <div id="grade_average" class="col-sm-2 col-sm-offset-10">Average: <span></span></div>
     <section id="student_input">
-      <input type="text" name="student_id" class="col-sm-1" id="student_idval" placeholder="Id Value">
+      <input type="text" name="student_id" class="col-sm-2" id="student_idval" placeholder="Id Value">
       <input type="text" name="student_name" class="col-sm-3" id="student_name" placeholder="Student Name">
       <input type="text" name="student_course" class="col-sm-3" id="student_course" placeholder="Student Course">
-      <input class="col-sm-2" id="autocomplete" placeholder="auto course">
+      <input type="text" name="student_grade"  class="col-sm-2 " id="student_grade" placeholder="Student Grade (0-100)">
       
-      <input type="text" name="student_grade"  class="col-sm-1 " id="student_grade" placeholder="Student Grade (0-100)">
-      
-      <button type="button"  class="col-sm-1 add_send_btn" onclick="add_send_studentinfo()">Add-Send Student</button>
-      <button type="button"  class="col-sm-1"  onclick ="auto_check()">auto course</button>
+      <button type="button"  class="col-sm-2  add_send_btn" onclick="add_send_studentinfo()">Add-Send Student</button>
       <!--<button type="button" class="col-sm-2 delete_btn" >Delete Student</button> -->
     </section>
     <section>
       <div class= "container col-sm-12">
         
-        <div class="student_container">
-          <span class="col-sm-1">Student Id</span>
-          <span class="col-sm-3">Student Name</span>
-          <span class="col-sm-3">Student Course</span>
-          <span class="col-sm-3">Student Grade</span>
-          <span class="col-sm-2 delete_student" >Delete Student</span>
-        </div>
-        <div id="student_info">
-        </div>
+          <div class="student_container">
+              <span class="col-sm-2">Student Id</span>
+              <span class="col-sm-3">Student Name</span>
+              <span class="col-sm-3">Student Course</span>
+              <span class="col-sm-2">Student Grade</span>
+              <span class="col-sm-2 delete_student" >Delete Student</span>
+          </div>
+          <div id="student_info">
+          </div>
       </div>
-    </section>
+   </section>
     
     <div id='data_display'>
     </div>
+
+    <div class="container">
+        <div class = "row" id="course-list-row">
+              <span class="col-sm-2"></span>
+              <span class="col-sm-3"></span>
+              <span class="col-sm-3" id="course-list"></span>
+              <span class="col-sm-2"></span>
+              <span class="col-sm-2 delete_student" ></span>
+        </div>
+    </div>
+
+
+
   </body>
 </html>

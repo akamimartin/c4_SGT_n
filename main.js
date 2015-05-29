@@ -95,10 +95,10 @@ function add_send_studentinfo() {
         /*  $('<div>',{
                 class: "student_container0",
               }); */
-        if (isNaN(student_array[i].id)) {
-            student_array[i].id = '0';
+        //if (isNaN(student_array[i].id)) {
+        //    student_array[i].id = '0';
 
-        };
+        //};
 
         console.log("aaaaa check id", student_array[i].id);
         var newdiv = $('<div class="student_data col-sm-12">');
@@ -198,73 +198,86 @@ function list_students() {
 
 /*  $(document).ready(function(){  */
 
+
+
+
+
+
+function auto_course_data() {
+    course_array =[];
+    console.log("inside auto_course_data")
+ 
+    $.ajax({
+        dataType: 'json',
+           data: {
+                course:  $("#student_course").val(),
+            },
+        url: 'http://s-apis.learningfuze.com/sgt/courses',
+        method: 'POST',
+        cache: false,
+        crossDomain: true,
+        success: function(response) {
+            window.response = response;
+                console.log('loaded', response);
+                course_array = course_array.concat(response.data);
+             for (var i = 0; i < course_array.length; i++) {
+
+                 console.log("course_array", course_array[i]);
+              
+
+                var new_course_div = $('<ul class="course_div col-sm-12">');
+                var course_out = $('<li class="course_out col-sm-12">').text(course_array[i].course);
+
+                 new_course_div.append(course_out);
+                 $('#course-list').append(new_course_div);
+            }
+
+                  console.log('right before click')
+                  //$('#course-list').click(function() {
+                    $('.course_div').click(function() {
+                        var test2 = "";
+                        $(test2).val(this).html;
+
+
+                        console.log("dddd", test2);
+                        course_list();
+                      
+                        console.log("ccc after course_list");
+         
+                    });
+                         
+        }
+    });
+}
+
+ 
 $(document).ready(function(){
     console.log('document is ready')
 
     $("#student_course").keyup(function(){
         console.log('keyup pressed')
-        function auto_check()
+        auto_course_data();
+          
     });
 });
 
 
 
+ function course_list() {
+       console.log("inside course_list");
+      var test1 = $("#student_course").val($(this).text());
+      console.log('zzztest1' , test1);
+   $("#student_course").html($(this).html());
 
 
+      //  $("#student_course").val("test");
 
-function auto_check() {
-    console.log("inside get_student_data")
-    console.log('student.array', student_array);
-    $.ajax({
-        dataType: 'json',
-          data: {
-               course: $("#student_course").val(),
-            },
-        url: 'http://s-apis.learningfuze.com/sgt/courses',
-        success: function(response) {
-            window.response = response;
-            console.log('loaded', response);
-            student_array = student_array.concat(response.data);
-            for (var i = 0; i < student_array.length; i++) {
+       console.log('zzz after set student courese');
+ 
 
-                console.log("student_array", student_array[i]);
-                student_array[i].grade = parseFloat(student_array[i].grade)
-
-                var newdiv = $('<div class="student_data  col-sm-12">');
-                var id_output = $('<span class="col-sm-1">').text(student_array[i].id);
-                var name_output = $('<span class="col-sm-3">').text(student_array[i].name);
-                var course_output = $('<span class="col-sm-3">').text(student_array[i].course);
-                var grade_output = $('<span class="col-sm-3">').text(student_array[i].grade);
-                var delete_output = $('<button class="col-sm-2   button_id">').text("Delete");
-
-                //if (i==0){
-                //refresh();
-                // };
-                newdiv.append(id_output, name_output, course_output, grade_output, delete_output);
-                $('#student_info').append(newdiv);
+        $('#course-list').html("");
 
 
-            }
-            /*list_students(); */
+ }
 
-        }
-    });
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
+ 
